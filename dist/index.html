@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="cs">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="Pečlivě vybrané klidnější pracovní nabídky v Praze a okolí Babic.">
+  <title>Klidná práce</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Newsreader:opsz,wght@6..72,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="#"><span class="mark">K</span><span>Klidná práce</span></a>
+    <div class="checked"><span></span> <span id="checkedAt">Načítám ověření…</span></div>
+  </header>
+
+  <main>
+    <section class="toolbar" aria-label="Filtry nabídek">
+      <label class="search"><span>⌕</span><input id="search" type="search" placeholder="Hledat v nabídkách…" aria-label="Hledat v nabídkách"></label>
+      <div class="filters">
+        <select id="category" aria-label="Obor">
+          <option value="all">Všechny obory</option>
+          <option value="text">Text a kultura</option>
+          <option value="admin">Klidná administrativa</option>
+          <option value="children">Práce s dětmi</option>
+          <option value="ozp">OZP</option>
+        </select>
+        <select id="location" aria-label="Lokalita">
+          <option value="all">Všechny lokality</option>
+          <option value="near">Babice a okolí</option>
+          <option value="prague">Praha</option>
+        </select>
+        <select id="status" aria-label="Stav nabídky">
+          <option value="active">Aktivní</option>
+          <option value="saved">Uložené</option>
+          <option value="hidden">Skryté</option>
+        </select>
+      </div>
+    </section>
+
+    <div class="section-head">
+      <div>
+        <h1>Pracovní nabídky <span id="visibleCount">1</span></h1>
+        <p><span id="newCount">1</span> nepřečtených · pouze ověřené a vyhovující nabídky</p>
+      </div>
+      <button id="markRead" class="text-button">Označit vše jako přečtené</button>
+    </div>
+
+    <section id="jobs" class="jobs" aria-live="polite"></section>
+    <section id="empty" class="empty" hidden>
+      <div>⌕</div><h2>Tady teď nic není</h2><p>Zkuste změnit filtr nebo zobrazit skryté nabídky.</p>
+    </section>
+
+    <aside class="rules">
+      <div>
+        <span class="rules-icon">✓</span>
+        <div><h3>Co už je odfiltrované</h3><p>Pokladny, recepce, call centra, sekretářské a koordinační role, organizování schůzek, prodej, hlučný provoz, manuální práce, brigády, povinný řidičák, výborná angličtina a chybějící kvalifikace.</p></div>
+      </div>
+      <div>
+        <span class="rules-icon muted">○</span>
+        <div><h3>OZP bez nálepky</h3><p>Nabídky pro OZP jsou v samostatném filtru. Neupřednostňujeme chráněné dílny ani prostředí, které s lidmi jedná jako s neschopnými.</p></div>
+      </div>
+    </aside>
+  </main>
+
+  <template id="jobTemplate">
+    <article class="job-card">
+      <div class="rank"></div>
+      <div class="job-main">
+        <div class="job-top">
+          <div class="tags"></div>
+          <span class="date"></span>
+        </div>
+        <h3 class="title"></h3>
+        <p class="company"></p>
+        <div class="facts"></div>
+        <p class="why"></p>
+        <details>
+          <summary>Celý popis <span>＋</span></summary>
+          <div class="description"></div>
+        </details>
+      </div>
+      <div class="job-actions">
+        <button class="icon-button save" title="Uložit nabídku" aria-label="Uložit nabídku">♡</button>
+        <button class="icon-button hide" title="Skrýt nabídku" aria-label="Skrýt nabídku">×</button>
+        <a class="apply" target="_blank" rel="noopener">Otevřít inzerát <span>↗</span></a>
+        <p class="source"></p>
+      </div>
+    </article>
+  </template>
+
+  <script src="app.js"></script>
+</body>
+</html>
