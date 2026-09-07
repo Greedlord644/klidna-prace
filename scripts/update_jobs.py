@@ -18,7 +18,8 @@ DATA = ROOT / "dist/data/jobs.json"
 UA = "Mozilla/5.0 (compatible; KlidnaPrace/1.0; +https://github.com/Greedlord644/klidna-prace)"
 ALLOWED_HOSTS = ("jobs.cz", "prace.cz", "jenprace.cz", "dobraprace.cz", "easy-prace.cz",
                  "volnamista.cz", "mpsv.cz", "uradprace.cz", "regionalniportaly.cz",
-                 "slavkovsko.cz", "startupjobs.cz", "profesia.cz")
+                 "slavkovsko.cz", "startupjobs.cz", "profesia.cz", "praha.eu", "edu.cz",
+                 "atlasskolstvi.cz", "pracujveskolstvi.cz")
 QUERIES = [
     'Praha redaktor korektor editor "plný úvazek" práce',
     'Praha archivář archivace digitalizace katalogizace "plný úvazek"',
@@ -26,6 +27,11 @@ QUERIES = [
     'Říčany Babice administrativa archivace "plný úvazek"',
     'Praha knihovna muzeum galerie dokumentátor "plný úvazek"',
     'Praha práce s dětmi asistent bez pedagogického vzdělání "plný úvazek"',
+    'Praha ZUŠ asistent pomocný pracovník "plný úvazek" práce',
+    'Praha "dům dětí a mládeže" asistent "plný úvazek" práce',
+    'Praha DDM volnočasové aktivity asistent "plný úvazek"',
+    'Praha "domov mládeže" asistent pomocný pracovník "plný úvazek"',
+    'Říčany ZUŠ DDM asistent práce "plný úvazek"',
 ]
 HARD_REJECT = [
     r"řidičsk[ýé] průkaz.{0,18}(podmín|nutn|požad|skupin)", r"aktivní řidič",
@@ -39,7 +45,8 @@ HARD_REJECT = [
     r"dpp|dpč|brigád|zkrácený úvazek|částečný úvazek",
 ]
 POSITIVE = ["redaktor", "korektor", "editor", "archiv", "digitaliz", "katalogiz", "evidence dokument",
-            "zadávání dat", "databáz", "knihovn", "muze", "galeri", "češtin", "text"]
+            "zadávání dat", "databáz", "knihovn", "muze", "galeri", "češtin", "text", "zuš",
+            "základní uměleck", "dům dětí", "ddm", "domov mládeže", "volnočas", "asistent"]
 EXPIRED = ["nabídka již není aktivní", "pozice již byla obsazena", "inzerát byl odstraněn",
            "platnost nabídky skončila", "nabídka byla ukončena", "stránka nenalezena"]
 
@@ -100,7 +107,9 @@ def classify(url: str, raw: str) -> dict | None:
     title = re.split(r"\s+[|–-]\s+", title)[0].strip()[:140]
     place = "Babice a okolí" if any(x in low for x in ("říčany", "babice", "strančice", "mnichovice")) else "Praha"
     category = "text" if any(x in low for x in ("redaktor", "korektor", "editor", "text", "nakladatel")) else "admin"
-    if any(x in low for x in ("dětmi", "děti", "dětský")): category = "children"
+    if any(x in low for x in ("dětmi", "děti", "dětský", "zuš", "základní uměleck",
+                              "dům dětí", "ddm", "domov mládeže", "volnočas")):
+        category = "children"
     if "ozp" in low or "invalid" in low: category = "ozp"
     caution = " Obecné komunikační požadavky je vhodné ověřit při prvním kontaktu." if "komunikativ" in low else ""
     return {
