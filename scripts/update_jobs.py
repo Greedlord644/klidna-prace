@@ -10,7 +10,7 @@ import re
 import time
 from datetime import datetime, timezone
 from pathlib import Path
-from urllib.parse import parse_qs, quote_plus, unquote, urlparse
+from urllib.parse import parse_qs, quote_plus, unquote, urljoin, urlparse
 from urllib.request import Request, urlopen
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -19,7 +19,7 @@ UA = "Mozilla/5.0 (compatible; KlidnaPrace/1.0; +https://github.com/Greedlord644
 ALLOWED_HOSTS = ("jobs.cz", "prace.cz", "jenprace.cz", "dobraprace.cz", "easy-prace.cz",
                  "volnamista.cz", "mpsv.cz", "uradprace.cz", "regionalniportaly.cz",
                  "slavkovsko.cz", "startupjobs.cz", "profesia.cz", "praha.eu", "edu.cz",
-                 "atlasskolstvi.cz", "pracujveskolstvi.cz")
+                 "atlasskolstvi.cz", "pracujveskolstvi.cz", "culturenet.cz")
 QUERIES = [
     'Praha redaktor korektor editor "plný úvazek" práce',
     'Praha archivář archivace digitalizace katalogizace "plný úvazek"',
@@ -80,6 +80,41 @@ def discover() -> set[str]:
     return urls
 
 
+def discover_culturenet() -> set[str]:
+    """Read Culturenet's own job archive instead of relying on search results."""
+    found: set[str] = set()
+    # WordPress REST search returns recent items of all sections; retain only
+    # canonical /prace/ detail URLs. This also catches items not shown on page 1.
+    for page_no in range(1, 4):
+        status, raw = fetch(f"https://www.culturenet.cz/wp-json/wp/v2/search?per_page=100&page={page_no}")
+        if status != 200:
+            break
+        try:
+            rows = json.loads(raw)
+        except json.JSONDecodeError:
+            break
+        for row in rows:
+            url = str(row.get("url", ""))
+            if re.fullmatch(r"https://www\.culturenet\.cz/prace/[^/]+/", url):
+                found.add(url)
+        if len(rows) < 100:
+            break
+    for page_no in range(1, 4):
+        archive = "https://www.culturenet.cz/prace/" if page_no == 1 else f"https://www.culturenet.cz/prace/page/{page_no}/"
+        status, raw = fetch(archive)
+        if status != 200:
+            break
+        before = len(found)
+        for href in re.findall(r'href=["\']([^"\']+)', raw, re.I):
+            url = urljoin(archive, html.unescape(href)).split("#")[0]
+            path = urlparse(url).path.rstrip("/")
+            if urlparse(url).netloc.lower().endswith("culturenet.cz") and re.fullmatch(r"/prace/[^/]+", path):
+                found.add(url.rstrip("/") + "/")
+        if page_no > 1 and len(found) == before:
+            break
+    return found
+
+
 def meta(raw: str, prop: str) -> str:
     patterns = [rf'<meta[^>]+(?:property|name)=["\']{re.escape(prop)}["\'][^>]+content=["\']([^"\']+)',
                 rf'<meta[^>]+content=["\']([^"\']+)["\'][^>]+(?:property|name)=["\']{re.escape(prop)}["\']']
@@ -126,7 +161,7 @@ def classify(url: str, raw: str) -> dict | None:
 def main() -> None:
     old = json.loads(DATA.read_text(encoding="utf-8")) if DATA.exists() else {"jobs": []}
     old_by_url = {j["url"]: j for j in old.get("jobs", [])}
-    candidates = set(old_by_url) | discover()
+    candidates = set(old_by_url) | discover_culturenet() | discover()
     jobs = []
     for url in sorted(candidates):
         status, raw = fetch(url)
