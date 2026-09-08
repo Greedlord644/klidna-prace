@@ -8,6 +8,7 @@ import html
 import json
 import re
 import time
+from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import parse_qs, quote_plus, unquote, urljoin, urlparse
@@ -57,6 +58,19 @@ POSITIVE = ["redaktor", "korektor", "editor", "archiv", "digitaliz", "katalogiz"
 EXPIRED = ["nabídka již není aktivní", "pozice již byla obsazena", "inzerát byl odstraněn",
            "platnost nabídky skončila", "nabídka byla ukončena", "stránka nenalezena"]
 
+DIRECT_SOURCES = {
+    "jobs.cz": (["https://www.jobs.cz/prace/praha/", "https://www.jobs.cz/prace/stredocesky-kraj/"], r"/rpd/\d+/?$"),
+    "prace.cz": (["https://www.prace.cz/nabidky/praha/", "https://www.prace.cz/nabidky/stredocesky-kraj/"], r"/(?:firma/[^/]+/)?nabidka/[0-9a-f-]+/?$"),
+    "jenprace.cz": (["https://www.jenprace.cz/nabidky/praha", "https://www.jenprace.cz/nabidky/stredocesky-kraj"], r"/nabidka/[^/]+/[^/]+/?$"),
+    "dobraprace.cz": (["https://www.dobraprace.cz/nabidka-prace/praha/", "https://www.dobraprace.cz/nabidka-prace/praha-vychod/"], r"/\d+-[^/]+\.html$"),
+    "easy-prace.cz": (["https://www.easy-prace.cz/praha", "https://www.easy-prace.cz/praha-vychod"], r"/nabidka/[^/]+/\d+/?$"),
+    "volnamista.cz": (["https://www.volnamista.cz/praha", "https://www.volnamista.cz/praha-vychod"], r"/nabidka-prace/[^/]+/\d+/?$"),
+    "profesia.cz": (["https://www.profesia.cz/prace/praha/"], r"/prace/[^/]+/O\d+/?$"),
+}
+
+LINK_HINTS = tuple(POSITIVE) + ("administrativ", "dokument", "evidence", "spis", "kulturn", "uměleck",
+                                     "děti", "mládež", "absolvent", "back office")
+
 
 def fetch(url: str, timeout: int = 18) -> tuple[int, str]:
     req = Request(url, headers={"User-Agent": UA, "Accept-Language": "cs,en;q=0.5"})
@@ -85,6 +99,33 @@ def discover() -> set[str]:
                 urls.add(href.split("#")[0])
         time.sleep(.4)
     return urls
+
+
+def discover_direct_sources() -> set[str]:
+    """Read each portal's own Prague/near-Prague result list."""
+    found: set[str] = set()
+    requests = [(host, detail_pattern, page) for host, (pages, detail_pattern) in DIRECT_SOURCES.items() for page in pages]
+
+    def scan(args: tuple[str, str, str]) -> set[str]:
+        host, detail_pattern, page = args
+        status, raw = fetch(page, timeout=12)
+        page_found: set[str] = set()
+        if status != 200:
+            return page_found
+        for match in re.finditer(r'(?is)<a\b[^>]*href=["\']([^"\']+)["\'][^>]*>(.*?)</a>', raw):
+            url = urljoin(page, html.unescape(match.group(1))).split("#")[0]
+            label = textify(match.group(2)).lower()
+            parsed = urlparse(url)
+            if not (parsed.netloc.lower() == host or parsed.netloc.lower().endswith("." + host)):
+                continue
+            if re.fullmatch(detail_pattern, parsed.path) and any(hint in (label + " " + parsed.path.lower()) for hint in LINK_HINTS):
+                page_found.add(url)
+        return page_found
+
+    with ThreadPoolExecutor(max_workers=6) as pool:
+        for page_found in pool.map(scan, requests):
+            found.update(page_found)
+    return found
 
 
 def discover_culturenet() -> set[str]:
@@ -139,6 +180,26 @@ def relevant_text(url: str, raw: str) -> str:
         if start >= 0:
             end = raw.find("</main>", start)
             return textify(raw[start:end if end >= 0 else len(raw)])
+    # Most large job portals expose the canonical advert as schema.org
+    # JobPosting JSON-LD. It is cleaner than navigation and related offers.
+    for block in re.findall(r'(?is)<script[^>]+type=["\']application/ld\+json["\'][^>]*>(.*?)</script>', raw):
+        try:
+            node = json.loads(html.unescape(block))
+        except (json.JSONDecodeError, TypeError):
+            continue
+        stack = node if isinstance(node, list) else [node]
+        while stack:
+            item = stack.pop()
+            if isinstance(item, list):
+                stack.extend(item)
+            elif isinstance(item, dict):
+                kind = item.get("@type", "")
+                if kind == "JobPosting" or (isinstance(kind, list) and "JobPosting" in kind):
+                    return textify(" ".join(str(item.get(k, "")) for k in ("title", "description", "qualifications", "responsibilities", "jobLocation")))
+                stack.extend(v for v in item.values() if isinstance(v, (dict, list)))
+    main = re.search(r"(?is)<main\b[^>]*>(.*?)</main>", raw)
+    if main:
+        return textify(main.group(1))
     return textify(raw)
 
 
@@ -184,7 +245,7 @@ def classify(url: str, raw: str) -> dict | None:
 def main() -> None:
     old = json.loads(DATA.read_text(encoding="utf-8")) if DATA.exists() else {"jobs": []}
     old_by_url = {j["url"]: j for j in old.get("jobs", [])}
-    candidates = set(old_by_url) | discover_culturenet() | discover()
+    candidates = set(old_by_url) | discover_culturenet() | discover_direct_sources() | discover()
     jobs = []
     for url in sorted(candidates):
         status, raw = fetch(url)
