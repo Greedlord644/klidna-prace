@@ -13,7 +13,13 @@ function filtered(){
   const q=$("#search").value.trim().toLocaleLowerCase("cs");
   const cat=$("#category").value, loc=$("#location").value, status=$("#status").value;
   return jobs.filter(j=>{
-    const statusOk=status==="hidden"?state.hidden.has(j.id):status==="saved"?state.saved.has(j.id)&&!state.hidden.has(j.id):!state.hidden.has(j.id);
+    const statusOk=status==="hidden"
+      ? state.hidden.has(j.id)
+      : status==="saved"
+        ? state.saved.has(j.id)&&!state.hidden.has(j.id)
+        : status==="active"
+          ? !state.hidden.has(j.id)
+          : !state.hidden.has(j.id)&&!state.read.has(j.id);
     return statusOk&&(cat==="all"||j.category===cat)&&(loc==="all"||j.location===loc)&&(!q||[j.title,j.company,j.place,j.why,j.description].join(" ").toLocaleLowerCase("cs").includes(q));
   });
 }
@@ -40,7 +46,16 @@ function render(){
     el.querySelector(".apply").addEventListener("click",()=>{state.read.add(j.id);persist();updateCounts();});
     root.appendChild(el);
   });
-  $("#empty").hidden=list.length>0; updateCounts(list.length);
+  const empty=$("#empty");
+  empty.hidden=list.length>0;
+  if(!list.length&&$("#status").value==="unread"&&jobs.some(j=>!state.hidden.has(j.id))){
+    empty.querySelector("h2").textContent="Vše je přečtené";
+    empty.querySelector("p").textContent="Přečtené nabídky najdete ve filtru Všechny aktivní.";
+  }else{
+    empty.querySelector("h2").textContent="Tady teď nic není";
+    empty.querySelector("p").textContent="Zkuste změnit filtr nebo zobrazit skryté nabídky.";
+  }
+  updateCounts(list.length);
 }
 function updateCounts(visible=filtered().length){
   $("#visibleCount").textContent=visible;
