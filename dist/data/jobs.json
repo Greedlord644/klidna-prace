@@ -1,5 +1,126 @@
 {
-  "checked_at": "2026-09-08T06:15:44.745311+00:00",
+  "checked_at": "2026-09-08T06:32:22.390818+00:00",
   "checked_display": "8. září 2026",
-  "jobs": []
+  "jobs": [
+    {
+      "id": "be3873986139e3",
+      "category": "children",
+      "location": "prague",
+      "title": "Prague City Tourism",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "salary": "viz inzerát",
+      "date": "ověřeno dnes",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Práce s dětmi",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
+      "description": "Prague City Tourism a. s. nyní hledá vhodného kandidáta/kandidátku na ...",
+      "url": "https://www.culturenet.cz/prace/prague-city-tourism-konkurz-specialista-ka-ic-letiste-vaclava-havla/"
+    },
+    {
+      "id": "2ee045ac639f80",
+      "category": "admin",
+      "location": "prague",
+      "title": "Aukční dům Sýpka (Brno)",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "salary": "viz inzerát",
+      "date": "ověřeno dnes",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
+      "description": "Pracovní náplň se týká práce s výtvarným uměním, zahrnuje každodenní kontakt ...",
+      "url": "https://www.culturenet.cz/prace/aukcni-dum-sypka-brno-konkurz-kunsthistorik-cka-administrativni-pracovnik-ce/"
+    },
+    {
+      "id": "58429b4fa9168f",
+      "category": "admin",
+      "location": "prague",
+      "title": "Dejvické divadlo",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "salary": "viz inzerát",
+      "date": "ověřeno dnes",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
+      "description": "Náplň práce: příprava a zapojení zvukové techniky včetně hudebních nástrojů odbavení ...",
+      "url": "https://www.culturenet.cz/prace/dejvicke-divadlo-konkurz-zvukar-ka/"
+    },
+    {
+      "id": "303b6597f66eed",
+      "category": "admin",
+      "location": "prague",
+      "title": "Divadlo Komedie",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "salary": "viz inzerát",
+      "date": "ověřeno dnes",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
+      "description": "Vaší prací bude hlavně: stavba, přestavby a bourání scénických prvků obsluha ...",
+      "url": "https://www.culturenet.cz/prace/divadlo-komedie-konkurz-jevistni-technik-8/"
+    },
+    {
+      "id": "5026f76091fc8e",
+      "category": "admin",
+      "location": "prague",
+      "title": "Janáčkova filharmonie Ostrava",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "salary": "viz inzerát",
+      "date": "ověřeno dnes",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
+      "description": "Termín konkurzu: 4. 12. 2026 v 10.30 Místo: Kino Vesmír, Zahradní 1741/17, Ostrava ...",
+      "url": "https://www.culturenet.cz/prace/janackova-filharmonie-ostrava-konkurz-skupina-1-housli/"
+    },
+    {
+      "id": "f057bc43520bde",
+      "category": "ozp",
+      "location": "prague",
+      "title": "Knihovna a tiskárna pro nevidomé K. E. Macana",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "salary": "viz inzerát",
+      "date": "ověřeno dnes",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Vhodné pro OZP",
+          "ozp"
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
+      "description": "Knihovna a tiskárna pro nevidomé K. E. Macana je státní příspěvková ...",
+      "url": "https://www.culturenet.cz/prace/knihovna-a-tiskarna-pro-nevidome-k-e-macana-konkurz-vedouci-ekonomickeho-useku/"
+    }
+  ]
 }
