@@ -36,11 +36,18 @@ QUERIES = [
 HARD_REJECT = [
     r"řidičsk[ýé] průkaz.{0,18}(podmín|nutn|požad|skupin)", r"aktivní řidič",
     r"angličtin.{0,24}(výborn|plynul|pokroč|c1|c2|rodil)", r"english.{0,18}(fluent|c1|c2)",
-    r"vysokoškolsk.{0,20}(podmín|požad|nutn)", r"pedagogick.{0,24}(vzdělán|minimum|kvalifik)",
+    r"\bv\.?š\.?\s+(vzdělán|ekonom|techn|práv|humanit|směru|oboru)", r"vysokoškolsk.{0,30}(vzdělán|podmín|požad|nutn)",
+    r"pedagogick.{0,24}(vzdělán|minimum|kvalifik)",
     r"praxe.{0,25}(podmín|nutn|požad|alespoň|minimálně)", r"minimálně.{0,8}[1-9].{0,8}(let|rok).{0,15}prax",
     r"pokladn|recepční|call centrum|telemarketing|obchodní zástup|aktivní prodej|oslovování klient",
     r"telefonick.{0,18}(komunik|kontakt)|péče o zákazník|zákaznick.{0,12}(podpor|servis)",
     r"organizace schůzek|vedení kalendář|sekretář|asistent.?(ka)?.{0,20}ředitele|office manager",
+    r"vedoucí|ředitel|manažer|management|vedení.{0,25}(týmu|lidí|pracovník)|řízení týmu|koordinátor",
+    r"aktivní komunikac|každodenní kontakt|kontakt se zákazník|kontakt s veřejnost|práce s klient",
+    r"komunikační.{0,20}organizační|odolnost vůči stresu|práce pod tlakem",
+    r"technik|technické práce|technický pracovník|zvukař|osvětlovač|stavba|bourání scén|údržba technik|elektrotechn",
+    r"turis|infocentr|informační centrum|letišt|průvodce|cestovní ruch",
+    r"housl|orchestrální hráč|konkurz.{0,30}(herec|herečka|tanečník|hudebník)",
     r"skladník|úklid|výrobn.{0,10}(děln|operátor)|zahradník|manuální práce|směnný provoz",
     r"dpp|dpč|brigád|zkrácený úvazek|částečný úvazek",
 ]
@@ -125,22 +132,38 @@ def meta(raw: str, prop: str) -> str:
     return ""
 
 
+def relevant_text(url: str, raw: str) -> str:
+    """Remove navigation/footer text that can corrupt location and requirement checks."""
+    if urlparse(url).netloc.lower().endswith("culturenet.cz"):
+        start = raw.find('<div class="page-content page-content--single')
+        if start >= 0:
+            end = raw.find("</main>", start)
+            return textify(raw[start:end if end >= 0 else len(raw)])
+    return textify(raw)
+
+
 def classify(url: str, raw: str) -> dict | None:
-    plain = textify(raw)
+    plain = relevant_text(url, raw)
     low = plain.lower()
     if len(plain) < 300 or any(x in low for x in EXPIRED) or any(re.search(x, low) for x in HARD_REJECT):
         return None
     if not ("plný úvazek" in low or "pracovní poměr" in low or "hpp" in low):
         return None
+    title = meta(raw, "og:title") or re.sub(r"\s+", " ", re.search(r"(?is)<title>(.*?)</title>", raw).group(1) if re.search(r"(?is)<title>(.*?)</title>", raw) else "Pracovní nabídka")
+    title = re.split(r"\s+[|–-]\s+", title)[0].strip()[:140]
+    location_text = (title + " " + url + " " + plain).lower()
+    near = any(x in location_text for x in ("říčany", "babice", "strančice", "mnichovice"))
+    prague = bool(re.search(r"\bpraha(?:\s|\b|[0-9-])|\bpraze\b|\bpražsk", location_text))
+    outside = any(x in (title + " " + url).lower() for x in ("brno", "ostrava", "žilina", "plzeň", "plzen", "olomouc", "liberec", "pardubice", "hradec-králové", "hradec-kralove", "české-budějovice", "ceske-budejovice"))
+    if outside or not (near or prague):
+        return None
     score = sum(3 for x in POSITIVE if x in low)
-    if "praha" in low: score += 3
-    if any(x in low for x in ("říčany", "babice", "strančice", "mnichovice")): score += 5
+    if prague: score += 3
+    if near: score += 5
     if score < 6:
         return None
-    title = meta(raw, "og:title") or re.sub(r"\s+", " ", re.search(r"(?is)<title>(.*?)</title>", raw).group(1) if re.search(r"(?is)<title>(.*?)</title>", raw) else "Pracovní nabídka")
-    desc = meta(raw, "og:description") or plain[:900]
-    title = re.split(r"\s+[|–-]\s+", title)[0].strip()[:140]
-    place = "Babice a okolí" if any(x in low for x in ("říčany", "babice", "strančice", "mnichovice")) else "Praha"
+    desc = plain[:900]
+    place = "Babice a okolí" if near else "Praha"
     category = "text" if any(x in low for x in ("redaktor", "korektor", "editor", "text", "nakladatel")) else "admin"
     if any(x in low for x in ("dětmi", "děti", "dětský", "zuš", "základní uměleck",
                               "dům dětí", "ddm", "domov mládeže", "volnočas")):
@@ -167,11 +190,6 @@ def main() -> None:
         status, raw = fetch(url)
         if status == 200:
             job = classify(url, raw)
-            # Již ručně prověřený záznam zachováme, pokud jeho detail stále
-            # existuje a portál ho neoznačil jako ukončený. Vyhledávací portály
-            # totiž často přidávají text cizích nabídek do patičky stránky.
-            if not job and url in old_by_url and not any(x in textify(raw).lower() for x in EXPIRED):
-                job = dict(old_by_url[url])
             if job: jobs.append(job)
         time.sleep(.15)
     jobs.sort(key=lambda j: (j["category"] == "ozp", -j.pop("_score", 0)))
