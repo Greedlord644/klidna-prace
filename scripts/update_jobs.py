@@ -37,13 +37,16 @@ QUERIES = [
 ]
 HARD_REJECT = [
     r"řidičsk[ýé] průkaz.{0,18}(podmín|nutn|požad|skupin)", r"aktivní řidič",
-    r"angličtin.{0,24}(výborn|plynul|pokroč|c1|c2|rodil)", r"english.{0,18}(fluent|c1|c2)",
+    r"angličtin.{0,24}(výborn|plynul|pokroč|b2|c1|c2|rodil)", r"english.{0,18}(fluent|b2|c1|c2)",
     r"\bv\.?š\.?\s+(vzdělán|ekonom|techn|práv|humanit|směru|oboru)", r"vysokoškolsk.{0,30}(vzdělán|podmín|požad|nutn)",
     r"pedagogick.{0,24}(vzdělán|minimum|kvalifik)",
     r"praxe.{0,25}(podmín|nutn|požad|alespoň|minimálně)", r"minimálně.{0,8}[1-9].{0,8}(let|rok).{0,15}prax",
     r"pokladn|recepční|call centrum|telemarketing|obchodní zástup|aktivní prodej|oslovování klient",
     r"telefonick.{0,18}(komunik|kontakt)|péče o zákazník|zákaznick.{0,12}(podpor|servis)",
-    r"organizace schůzek|vedení kalendář|sekretář|asistent.?(ka)?.{0,20}ředitele|office manager",
+    r"organizace schůzek|správa kalendář|vedení kalendář|plánování schůzek|koordinace termín",
+    r"koordinace.{0,30}(schůzek|akcí|administrativních aktivit)|vyřizování.{0,25}(korespondence|telefonát)",
+    r"příprava.{0,25}(reportů|reportu|prezentací|prezentace)|více úkolů současně|multitask",
+    r"sekretář|asistent.?(ka)?.{0,20}ředitele|office manager",
     r"vedoucí|ředitel|manažer|management|vedení.{0,25}(týmu|lidí|pracovník)|řízení týmu|koordinátor",
     r"aktivní komunikac|každodenní kontakt|kontakt se zákazník|kontakt s veřejnost|práce s klient",
     r"komunikační.{0,20}organizační|odolnost vůči stresu|práce pod tlakem",
@@ -51,7 +54,9 @@ HARD_REJECT = [
     r"turis|infocentr|informační centrum|letišt|průvodce|cestovní ruch",
     r"housl|orchestrální hráč|konkurz.{0,30}(herec|herečka|tanečník|hudebník)",
     r"skladník|úklid|výrobn.{0,10}(děln|operátor)|zahradník|manuální práce|směnný provoz",
-    r"dpp|dpč|brigád|zkrácený úvazek|částečný úvazek",
+    r"excel.{0,30}(nutn|podmín|požad|nezbytn|pokroč|výborn|velmi dobr)",
+    r"(nutn|podmín|požad|nezbytn|pokroč|výborn|velmi dobr|dobrou znalost).{0,30}excel",
+    r"dpp|dpč|brigád|zkrácený úvazek|částečný úvazek|\b(?:1\d|2\d)\s*(?:hod|h)\.?\s*(?:/|týd)",
 ]
 POSITIVE = ["redaktor", "korektor", "editor", "archiv", "digitaliz", "katalogiz", "evidence dokument",
             "zadávání dat", "databáz", "knihovn", "muze", "galeri", "češtin", "text", "zuš",
@@ -213,7 +218,7 @@ def classify(url: str, raw: str) -> dict | None:
     low = plain.lower()
     if len(plain) < 300 or any(x in low for x in EXPIRED) or any(re.search(x, low) for x in HARD_REJECT):
         return None
-    if not ("plný úvazek" in low or "pracovní poměr" in low or "hpp" in low):
+    if not ("plný úvazek" in low or "plný pracovní úvazek" in low or "hpp" in low):
         return None
     title = meta(raw, "og:title") or re.sub(r"\s+", " ", re.search(r"(?is)<title>(.*?)</title>", raw).group(1) if re.search(r"(?is)<title>(.*?)</title>", raw) else "Pracovní nabídka")
     title = re.split(r"\s+[|–-]\s+", title)[0].strip()[:140]
