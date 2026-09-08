@@ -20,7 +20,8 @@ UA = "Mozilla/5.0 (compatible; KlidnaPrace/1.0; +https://github.com/Greedlord644
 ALLOWED_HOSTS = ("jobs.cz", "prace.cz", "jenprace.cz", "dobraprace.cz", "easy-prace.cz",
                  "volnamista.cz", "mpsv.cz", "uradprace.cz", "regionalniportaly.cz",
                  "slavkovsko.cz", "startupjobs.cz", "profesia.cz", "praha.eu", "edu.cz",
-                 "atlasskolstvi.cz", "pracujveskolstvi.cz", "culturenet.cz")
+                 "atlasskolstvi.cz", "pracujveskolstvi.cz", "culturenet.cz", "edu.gov.cz",
+                 "edujob.cz", "izus.cz")
 QUERIES = [
     'Praha redaktor korektor editor "plný úvazek" práce',
     'Praha archivář archivace digitalizace katalogizace "plný úvazek"',
@@ -66,6 +67,9 @@ DIRECT_SOURCES = {
     "easy-prace.cz": (["https://www.easy-prace.cz/praha", "https://www.easy-prace.cz/praha-vychod"], r"/nabidka/[^/]+/\d+/?$"),
     "volnamista.cz": (["https://www.volnamista.cz/praha", "https://www.volnamista.cz/praha-vychod"], r"/nabidka-prace/[^/]+/\d+/?$"),
     "profesia.cz": (["https://www.profesia.cz/prace/praha/"], r"/prace/[^/]+/O\d+/?$"),
+    "edu.gov.cz": (["https://edu.gov.cz/kariera-2/volna-mista-ve-skolstvi/"], r"/job/[^/?]+/?$"),
+    "edujob.cz": (["https://www.edujob.cz/nabidky-prace/"], r"/job/\d+/?$"),
+    "izus.cz": (["https://www.izus.cz/portal_prace/"], r"/portal_prace/\?id_nabidky_prace=\d+$"),
 }
 
 LINK_HINTS = tuple(POSITIVE) + ("administrativ", "dokument", "evidence", "spis", "kulturn", "uměleck",
@@ -118,7 +122,8 @@ def discover_direct_sources() -> set[str]:
             parsed = urlparse(url)
             if not (parsed.netloc.lower() == host or parsed.netloc.lower().endswith("." + host)):
                 continue
-            if re.fullmatch(detail_pattern, parsed.path) and any(hint in (label + " " + parsed.path.lower()) for hint in LINK_HINTS):
+            target = parsed.path + (("?" + parsed.query) if parsed.query else "")
+            if re.fullmatch(detail_pattern, target) and any(hint in (label + " " + target.lower()) for hint in LINK_HINTS):
                 page_found.add(url)
         return page_found
 
