@@ -50,7 +50,7 @@ HARD_REJECT = [
     r"správa kalendář|vedení kalendář|networking",
     r"koordinace.{0,30}(schůzek|akcí|administrativních aktivit)|vyřizování.{0,25}(korespondence|telefonát)",
     r"příprava.{0,25}(reportů|reportu|prezentací|prezentace)|více úkolů současně|multitask",
-    r"sekretář|asistent.?(ka)?.{0,20}ředitele|office manager",
+    r"sekretář|asistent.?(ka)?.{0,20}ředitele|office manager|copywrit|social media",
     r"vedoucí|ředitel|manažer|management|vedení.{0,25}(týmu|lidí|pracovník)|řízení týmu|koordinátor",
     r"aktivní komunikac|každodenní kontakt|kontakt se zákazník|kontakt s veřejnost|práce s klient",
     r"angličtin.{0,40}(komunikac|využit|slovem|aktivn|každodenn)",
@@ -84,6 +84,11 @@ DIRECT_SOURCES = {
 
 LINK_HINTS = tuple(POSITIVE) + ("administrativ", "dokument", "evidence", "spis", "kulturn", "uměleck",
                                      "děti", "mládež", "absolvent", "back office")
+STARTUPJOBS_SLUG_HINTS = (
+    "admin", "asistent", "assistant", "back-office", "data-entry", "evidence",
+    "dokument", "archiv", "katalog", "editor", "redaktor", "korektor", "text",
+    "content", "knihov", "muze", "galer", "kultur", "deti", "kids", "mladez",
+)
 
 
 def fetch(url: str, timeout: int = 18) -> tuple[int, str]:
@@ -140,6 +145,25 @@ def discover_direct_sources() -> set[str]:
     with ThreadPoolExecutor(max_workers=6) as pool:
         for page_found in pool.map(scan, requests):
             found.update(page_found)
+    return found
+
+
+def discover_startupjobs() -> set[str]:
+    """Read StartupJobs' official live-offer sitemap directly."""
+    status, raw = fetch("https://www.startupjobs.cz/sitemap/offers.xml", timeout=20)
+    if status != 200:
+        return set()
+    found: set[str] = set()
+    for value in re.findall(r"(?is)<loc>\s*(.*?)\s*</loc>", raw):
+        url = html.unescape(value).strip().split("#")[0]
+        parsed = urlparse(url)
+        if parsed.netloc.lower() not in ("startupjobs.cz", "www.startupjobs.cz"):
+            continue
+        if not re.fullmatch(r"/nabidka/\d+/[^/?]+/?", parsed.path):
+            continue
+        slug = parsed.path.rstrip("/").rsplit("/", 1)[-1].lower()
+        if any(hint in slug for hint in STARTUPJOBS_SLUG_HINTS):
+            found.add(url)
     return found
 
 
@@ -260,7 +284,8 @@ def classify(url: str, raw: str) -> dict | None:
 def main() -> None:
     old = json.loads(DATA.read_text(encoding="utf-8")) if DATA.exists() else {"jobs": []}
     old_by_url = {j["url"]: j for j in old.get("jobs", [])}
-    candidates = set(old_by_url) | discover_culturenet() | discover_direct_sources() | discover()
+    candidates = (set(old_by_url) | discover_culturenet() | discover_startupjobs()
+                  | discover_direct_sources() | discover())
     jobs = []
     for url in sorted(candidates):
         status, raw = fetch(url)
