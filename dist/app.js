@@ -34,7 +34,7 @@ function render(){
     el.querySelector(".date").textContent=j.date;
     el.querySelector(".title").textContent=j.title;
     el.querySelector(".company").textContent=j.company;
-    el.querySelector(".facts").innerHTML='<span>⌖ '+esc(j.place)+'</span><span>◷ Plný úvazek</span><span>◈ '+esc(j.salary)+'</span>';
+    el.querySelector(".facts").innerHTML='<span>⌖ '+esc(j.place)+'</span><span>◷ '+esc(j.employment||"Plný úvazek")+'</span><span>◈ '+esc(j.salary)+'</span>';
     el.querySelector(".why").textContent=j.why;
     el.querySelector(".description").textContent=j.description;
     el.querySelector(".apply").href=j.url;
