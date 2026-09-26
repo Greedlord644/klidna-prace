@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Discover, verify and strictly filter quiet full-time jobs for Iva."""
+"""Discover, verify and rank calmer jobs for Iva."""
 
 from __future__ import annotations
 
@@ -7,7 +7,6 @@ import hashlib
 import html
 import json
 import re
-import time
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 from pathlib import Path
@@ -21,7 +20,7 @@ ALLOWED_HOSTS = ("jobs.cz", "prace.cz", "jenprace.cz", "dobraprace.cz", "easy-pr
                  "volnamista.cz", "mpsv.cz", "uradprace.cz", "regionalniportaly.cz",
                  "slavkovsko.cz", "startupjobs.cz", "profesia.cz", "praha.eu", "edu.cz",
                  "atlasskolstvi.cz", "pracujveskolstvi.cz", "culturenet.cz", "edu.gov.cz",
-                 "edujob.cz", "izus.cz")
+                 "edujob.cz", "izus.cz", "jobs.recruitis.io", "divadlo.cz")
 QUERIES = [
     'Praha redaktor korektor editor "plný úvazek" práce',
     'Praha archivář archivace digitalizace katalogizace "plný úvazek"',
@@ -34,38 +33,39 @@ QUERIES = [
     'Praha DDM volnočasové aktivity asistent "plný úvazek"',
     'Praha "domov mládeže" asistent pomocný pracovník "plný úvazek"',
     'Říčany ZUŠ DDM asistent práce "plný úvazek"',
+    'Praha asistent kultura knihy hračky práce',
+    'Praha třídění knih bez praxe práce',
+    'Praha vrátný muzeum divadlo galerie práce',
+    'Praha jednoduchá práce asistent bez praxe',
 ]
 HARD_REJECT = [
     r"řidičsk[ýé] průkaz.{0,18}(podmín|nutn|požad|skupin)", r"aktivní řidič",
     r"angličtin.{0,24}(výborn|plynul|pokroč|b2|c1|c2|rodil)", r"english.{0,18}(fluent|b2|c1|c2)",
-    r"\bv\.?š\.?\s+(vzdělán|ekonom|techn|práv|humanit|směru|oboru)", r"vysokoškolsk.{0,30}(vzdělán|podmín|požad|nutn)",
+    r"(požadujeme|podmínkou|nutn|nezbytn).{0,35}(vysokoškol|\bv\.?š\.?)",
+    r"(vysokoškol|\bv\.?š\.?).{0,35}(podmín|požad|nutn|nezbytn)",
     r"pedagogick.{0,24}(vzdělán|minimum|kvalifik)",
     r"praxe.{0,25}(podmín|nutn|požad|alespoň|minimálně)", r"minimálně.{0,8}[1-9].{0,8}(let|rok).{0,15}prax",
-    r"pokladn|recepční|call centrum|telemarketing|\bobchodní\b|aktivní prodej|prodejní činnost",
+    r"pokladn|call centrum|telemarketing|cold call",
     r"oslovován.{0,30}(klient|zákazník)|akvizic.{0,20}(klient|zákazník)",
-    r"komunikac.{0,35}(klient|zákazník|lidmi|veřejnost)|kontakt.{0,25}(klient|zákazník|veřejnost)",
-    r"(klient|zákazník).{0,25}(komunikac|kontakt|péče)|klientsk.{0,15}(péče|servis)",
-    r"telefonick.{0,18}(komunik|kontakt)|péče o zákazník|zákaznick.{0,12}(podpor|servis)",
+    r"telefonick.{0,18}(komunik|kontakt|prodej)|vyřizování.{0,25}telefonát",
     r"(organizace|domluv|plánování|koordinace).{0,25}(schůzek|schůzky|termínů|prohlídek)",
     r"správa kalendář|vedení kalendář|networking",
     r"koordinace.{0,30}(schůzek|akcí|administrativních aktivit)|vyřizování.{0,25}(korespondence|telefonát)",
     r"příprava.{0,25}(reportů|reportu|prezentací|prezentace)|více úkolů současně|multitask",
     r"sekretář|asistent.?(ka)?.{0,20}ředitele|office manager|copywrit|social media",
-    r"vedoucí|ředitel|manažer|management|vedení.{0,25}(týmu|lidí|pracovník)|řízení týmu|koordinátor",
-    r"aktivní komunikac|každodenní kontakt|kontakt se zákazník|kontakt s veřejnost|práce s klient",
-    r"angličtin.{0,40}(komunikac|využit|slovem|aktivn|každodenn)",
+    r"vedoucí|ředitel|manažer|management|team leader|vedení.{0,25}(týmu|lidí|pracovník)|řízení týmu|koordinátor",
     r"komunikační.{0,20}organizační|odolnost vůči stresu|práce pod tlakem",
-    r"technik|technické práce|technický pracovník|zvukař|osvětlovač|stavba|bourání scén|údržba technik|elektrotechn",
+    r"technik|technické práce|technický pracovník|zvukař|osvětlovač|stavba|bourání scén|údržba technik|elektrotechn|network administrator|software developer|\bit administrator\b|\bdevops\b",
     r"turis|infocentr|informační centrum|letišt|průvodce|cestovní ruch",
     r"housl|orchestrální hráč|konkurz.{0,30}(herec|herečka|tanečník|hudebník)",
-    r"skladník|úklid|výrobn.{0,10}(děln|operátor)|zahradník|manuální práce|směnný provoz",
+    r"úklid|výrobn.{0,10}(děln|operátor)|zahradník",
     r"excel.{0,30}(nutn|podmín|požad|nezbytn|pokroč|výborn|velmi dobr)",
     r"(nutn|podmín|požad|nezbytn|pokroč|výborn|velmi dobr|dobrou znalost).{0,30}excel",
-    r"dpp|dpč|brigád|zkrácený úvazek|částečný úvazek|\b(?:1\d|2\d)\s*(?:hod|h)\.?\s*(?:/|týd)",
 ]
 POSITIVE = ["redaktor", "korektor", "editor", "archiv", "digitaliz", "katalogiz", "evidence dokument",
-            "zadávání dat", "databáz", "knihovn", "muze", "galeri", "češtin", "text", "zuš",
-            "základní uměleck", "dům dětí", "ddm", "domov mládeže", "volnočas", "asistent"]
+            "zadávání dat", "databáz", "knih", "muze", "galeri", "češtin", "text", "zuš",
+            "základní uměleck", "dům dětí", "ddm", "domov mládeže", "volnočas", "asistent",
+            "třídění", "vrátn", "hračk", "fotograf"]
 EXPIRED = ["nabídka již není aktivní", "pozice již byla obsazena", "inzerát byl odstraněn",
            "platnost nabídky skončila", "nabídka byla ukončena", "stránka nenalezena"]
 
@@ -80,18 +80,35 @@ DIRECT_SOURCES = {
     "edu.gov.cz": (["https://edu.gov.cz/kariera-2/volna-mista-ve-skolstvi/"], r"/job/[^/?]+/?$"),
     "edujob.cz": (["https://www.edujob.cz/nabidky-prace/"], r"/job/\d+/?$"),
     "izus.cz": (["https://www.izus.cz/portal_prace/"], r"/portal_prace/\?id_nabidky_prace=\d+$"),
+    "jobs.recruitis.io": (["https://jobs.recruitis.io/knihobot"], r"/knihobot/\d+-[^/?]+/?$"),
+    "divadlo.cz": (["https://www.divadlo.cz/ceske-divadlo/prilezitosti/"], r"/clanky/[^/?]+/?$"),
+}
+SEED_URLS = {
+    "https://www.culturenet.cz/prace/hugo-chodi-bos-konkurz-asistenta-ka-prodeje/",
+    "https://jobs.recruitis.io/knihobot/458172-brigada-v-knihobotu-hostivar",
+    "https://www.divadlo.cz/clanky/narodni-divadlo-konkurz-vratna-vratny-anenskeho-arealu/",
 }
 
 LINK_HINTS = tuple(POSITIVE) + ("administrativ", "dokument", "evidence", "spis", "kulturn", "uměleck",
-                                     "děti", "mládež", "absolvent", "back office")
+                                     "děti", "mládež", "absolvent", "back office", "vrátn", "knih", "hračk")
 STARTUPJOBS_SLUG_HINTS = (
     "admin", "asistent", "assistant", "back-office", "data-entry", "evidence",
     "dokument", "archiv", "katalog", "editor", "redaktor", "korektor", "text",
     "content", "knihov", "muze", "galer", "kultur", "deti", "kids", "mladez",
 )
 
+RISK_RULES = [
+    ("kontakt se zákazníky", r"komunikac.{0,35}(zákazník|klient|veřejnost)|radit zákazník|péče o zákazník"),
+    ("prodej na místě", r"\bprodej(?:e|i|na|ní)?\b|prodejně|proviz"),
+    ("angličtina", r"angličtin|anglick|english"),
+    ("směny nebo noční provoz", r"směnn|směny|noční služ|noční směn"),
+    ("brigáda nebo kratší úvazek", r"\bbrigád|\bdpp\b|\bdpč\b|zkrácený úvazek|částečný úvazek"),
+    ("lehčí manuální práce nebo výkonové normy", r"manuální práce|vychystáv|pickuj|kompletuj|třídění knih|normy|orientovaném na výkon|měříme rychlost"),
+    ("vrátnice, recepce nebo ostraha", r"\bvrátn|\brecepce\b|ostraha|kamerov|obchůzk|registrace návštěv"),
+]
 
-def fetch(url: str, timeout: int = 18) -> tuple[int, str]:
+
+def fetch(url: str, timeout: int = 10) -> tuple[int, str]:
     req = Request(url, headers={"User-Agent": UA, "Accept-Language": "cs,en;q=0.5"})
     try:
         with urlopen(req, timeout=timeout) as r:
@@ -107,16 +124,21 @@ def textify(raw: str) -> str:
 
 def discover() -> set[str]:
     urls: set[str] = set()
-    for query in QUERIES:
-        _, page = fetch("https://html.duckduckgo.com/html/?q=" + quote_plus(query))
+    def search(query: str) -> set[str]:
+        found: set[str] = set()
+        _, page = fetch("https://html.duckduckgo.com/html/?q=" + quote_plus(query), timeout=8)
         for href in re.findall(r'href=["\']([^"\']+)', page):
             href = html.unescape(href)
             if "uddg=" in href:
                 href = unquote(parse_qs(urlparse(href).query).get("uddg", [""])[0])
             host = urlparse(href).netloc.lower()
             if href.startswith("http") and any(host == h or host.endswith("." + h) for h in ALLOWED_HOSTS):
-                urls.add(href.split("#")[0])
-        time.sleep(.4)
+                found.add(href.split("#")[0])
+        return found
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for found in pool.map(search, QUERIES):
+            urls.update(found)
     return urls
 
 
@@ -172,33 +194,34 @@ def discover_culturenet() -> set[str]:
     found: set[str] = set()
     # WordPress REST search returns recent items of all sections; retain only
     # canonical /prace/ detail URLs. This also catches items not shown on page 1.
-    for page_no in range(1, 4):
-        status, raw = fetch(f"https://www.culturenet.cz/wp-json/wp/v2/search?per_page=100&page={page_no}")
+    endpoints = [f"https://www.culturenet.cz/wp-json/wp/v2/search?per_page=100&page={page_no}" for page_no in range(1, 3)]
+    endpoints += ["https://www.culturenet.cz/prace/", "https://www.culturenet.cz/prace/page/2/"]
+
+    def scan(endpoint: str) -> set[str]:
+        page_found: set[str] = set()
+        status, raw = fetch(endpoint, timeout=8)
         if status != 200:
-            break
-        try:
-            rows = json.loads(raw)
-        except json.JSONDecodeError:
-            break
-        for row in rows:
-            url = str(row.get("url", ""))
-            if re.fullmatch(r"https://www\.culturenet\.cz/prace/[^/]+/", url):
-                found.add(url)
-        if len(rows) < 100:
-            break
-    for page_no in range(1, 4):
-        archive = "https://www.culturenet.cz/prace/" if page_no == 1 else f"https://www.culturenet.cz/prace/page/{page_no}/"
-        status, raw = fetch(archive)
-        if status != 200:
-            break
-        before = len(found)
+            return page_found
+        if "wp-json" in endpoint:
+            try:
+                rows = json.loads(raw)
+            except json.JSONDecodeError:
+                return page_found
+            for row in rows:
+                url = str(row.get("url", ""))
+                if re.fullmatch(r"https://www\.culturenet\.cz/prace/[^/]+/", url):
+                    page_found.add(url)
+            return page_found
         for href in re.findall(r'href=["\']([^"\']+)', raw, re.I):
-            url = urljoin(archive, html.unescape(href)).split("#")[0]
+            url = urljoin(endpoint, html.unescape(href)).split("#")[0]
             path = urlparse(url).path.rstrip("/")
             if urlparse(url).netloc.lower().endswith("culturenet.cz") and re.fullmatch(r"/prace/[^/]+", path):
-                found.add(url.rstrip("/") + "/")
-        if page_no > 1 and len(found) == before:
-            break
+                page_found.add(url.rstrip("/") + "/")
+        return page_found
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for page_found in pool.map(scan, endpoints):
+            found.update(page_found)
     return found
 
 
@@ -247,13 +270,29 @@ def classify(url: str, raw: str) -> dict | None:
     low = plain.lower()
     if len(plain) < 300 or any(x in low for x in EXPIRED) or any(re.search(x, low) for x in HARD_REJECT):
         return None
-    if not ("plný úvazek" in low or "plný pracovní úvazek" in low or "hpp" in low):
+    if re.search(r"[А-Яа-я]", plain) or "/ua-" in url.lower():
+        return None
+    cultural_context = any(x in low for x in ("divadlo", "galerie", "muzeum", "knihovna", "kulturní"))
+    if "recep" in low and not cultural_context:
+        return None
+    employment = "Plný úvazek"
+    if re.search(r"\bbrigád|\bdpp\b|\bdpč\b", low):
+        employment = "Brigáda / DPP nebo DPČ"
+    elif re.search(r"zkrácený úvazek|částečný úvazek", low):
+        employment = "Zkrácený úvazek"
+    if not ("plný úvazek" in low or "plný pracovní úvazek" in low or "hpp" in low
+            or employment != "Plný úvazek"):
         return None
     title = meta(raw, "og:title") or re.sub(r"\s+", " ", re.search(r"(?is)<title>(.*?)</title>", raw).group(1) if re.search(r"(?is)<title>(.*?)</title>", raw) else "Pracovní nabídka")
-    title = re.split(r"\s+[|–-]\s+", title)[0].strip()[:140]
+    if "informační portál" in title.lower():
+        heading = re.search(r"(?is)<h1\b[^>]*>(.*?)</h1>", raw)
+        if heading:
+            title = textify(heading.group(1))
+    title = re.sub(r"\s+-\s+(?:Culturenet|StartupJobs.*|Jobs\.cz.*|Prace\.cz.*)$", "", title, flags=re.I)
+    title = re.split(r"\s+\|\s+", title)[0].strip()[:140]
     location_text = (title + " " + url + " " + plain).lower()
     near = any(x in location_text for x in ("říčany", "babice", "strančice", "mnichovice"))
-    prague = bool(re.search(r"\bpraha(?:\s|\b|[0-9-])|\bpraze\b|\bpražsk", location_text))
+    prague = bool(re.search(r"\bpraha(?:\s|\b|[0-9-])|\bpraze\b|\bprahy\b|\bpražsk", location_text))
     outside = any(x in (title + " " + url).lower() for x in ("brno", "ostrava", "žilina", "plzeň", "plzen", "olomouc", "liberec", "pardubice", "hradec-králové", "hradec-kralove", "české-budějovice", "ceske-budejovice"))
     if outside or not (near or prague):
         return None
@@ -264,36 +303,79 @@ def classify(url: str, raw: str) -> dict | None:
         return None
     desc = plain[:900]
     place = "Babice a okolí" if near else "Praha"
-    category = "text" if any(x in low for x in ("redaktor", "korektor", "editor", "text", "nakladatel")) else "admin"
-    if any(x in low for x in ("dětmi", "děti", "dětský", "zuš", "základní uměleck",
+    core = low[:1200]
+    category = "text" if any(x in core for x in ("redaktor", "korektor", "editor", "tvorba text", "úprava text", "nakladatel")) else "admin"
+    if any(x in core for x in ("dětmi", "děti", "dětský", "zuš", "základní uměleck",
                               "dům dětí", "ddm", "domov mládeže", "volnočas")):
         category = "children"
     if "ozp" in low or "invalid" in low: category = "ozp"
-    caution = " Obecné komunikační požadavky je vhodné ověřit při prvním kontaktu." if "komunikativ" in low else ""
+    warnings = [label for label, pattern in RISK_RULES if re.search(pattern, core)]
+    tag_label = {"text":"Text a kultura","admin":"Archivace a evidence","children":"Práce s dětmi","ozp":"Vhodné pro OZP"}[category]
+    if "knihobot" in low or "třídění knih" in low:
+        tag_label = "Knihy a třídění"
+    elif "vrátn" in core:
+        tag_label = "Vrátnice a třídění"
+    elif category == "children" and "prodej" in low:
+        tag_label = "Kultura a asistence"
+    tags = [[tag_label, "ozp" if category == "ozp" else ""]]
+    if warnings:
+        tags.append(["Ke zvážení", "warn"])
+        why = "Může být zajímavá, ale před reakcí zvažte: " + "; ".join(warnings) + "."
+    else:
+        why = "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků."
+    salary = "neuvedeno"
+    salary_match = re.search(r"\b(\d{2,3}\s*[-–]\s*\d{2,3}\s*kč\s*/?\s*hod(?:inu)?)", low)
+    if salary_match:
+        salary = salary_match.group(1).replace("kč", "Kč")
+    elif "proviz" in core:
+        salary = "neuvedeno (provize)"
+    date = "ověřeno dnes"
+    published = meta(raw, "article:published_time")
+    published_match = re.match(r"(\d{4})-(\d{2})-(\d{2})", published)
+    if published_match:
+        year, month, day = published_match.groups()
+        date = f"publikováno {int(day)}. {int(month)}. {year}"
+    else:
+        visible_date = re.search(r"publikováno:\s*(\d{1,2})\.\s*(\d{1,2})\s*\.\s*(\d{4})", low)
+        if visible_date:
+            day, month, year = visible_date.groups()
+            date = f"publikováno {int(day)}. {int(month)}. {year}"
     return {
         "id": hashlib.sha1(url.encode()).hexdigest()[:14], "category": category,
         "location": "near" if place != "Praha" else "prague", "title": title,
-        "company": "viz inzerát", "place": place, "salary": "viz inzerát", "date": "ověřeno dnes",
+        "company": "viz inzerát", "place": place, "employment": employment,
+        "salary": salary, "date": date,
         "source": urlparse(url).netloc.removeprefix("www."),
-        "tags": [[{"text":"Text a kultura","admin":"Archivace a evidence","children":"Práce s dětmi","ozp":"Vhodné pro OZP"}[category], "ozp" if category == "ozp" else ""]],
-        "why": "Nabídka prošla filtrem kvalifikace, lokality, úvazku a zátěžových požadavků.",
-        "description": desc[:900] + caution, "url": url, "_score": score,
+        "tags": tags, "why": why,
+        "description": desc[:900], "url": url, "_score": score, "_risk": len(warnings),
     }
 
 
 def main() -> None:
     old = json.loads(DATA.read_text(encoding="utf-8")) if DATA.exists() else {"jobs": []}
     old_by_url = {j["url"]: j for j in old.get("jobs", [])}
-    candidates = (set(old_by_url) | discover_culturenet() | discover_startupjobs()
-                  | discover_direct_sources() | discover())
+    discovery = (discover_culturenet, discover_startupjobs, discover_direct_sources, discover)
+    candidates = set(old_by_url) | SEED_URLS
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        for found in pool.map(lambda fn: fn(), discovery):
+            candidates.update(found)
     jobs = []
-    for url in sorted(candidates):
-        status, raw = fetch(url)
+    def inspect(url: str) -> dict | None:
+        status, raw = fetch(url, timeout=10)
+        if status == 0:
+            status, raw = fetch(url, timeout=10)
         if status == 200:
-            job = classify(url, raw)
-            if job: jobs.append(job)
-        time.sleep(.15)
-    jobs.sort(key=lambda j: (j["category"] == "ozp", -j.pop("_score", 0)))
+            return classify(url, raw)
+        return None
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        for job in pool.map(inspect, sorted(candidates)):
+            if job:
+                jobs.append(job)
+    jobs.sort(key=lambda j: (j.get("_risk", 0) > 0, j.get("_risk", 0), j["category"] == "ozp", -j.get("_score", 0)))
+    for job in jobs:
+        job.pop("_score", None)
+        job.pop("_risk", None)
     now = datetime.now(timezone.utc)
     months = ["", "ledna", "února", "března", "dubna", "května", "června", "července", "srpna", "září", "října", "listopadu", "prosince"]
     payload = {"checked_at": now.isoformat(), "checked_display": f"{now.day}. {months[now.month]} {now.year}", "jobs": jobs[:40]}
