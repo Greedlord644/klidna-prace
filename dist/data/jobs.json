@@ -1,7 +1,32 @@
 {
-  "checked_at": "2026-09-26T18:16:51.357550+00:00",
-  "checked_display": "26. září 2026",
+  "checked_at": "2026-10-09T15:31:18.059530+00:00",
+  "checked_display": "9. října 2026",
   "jobs": [
+    {
+      "id": "59664e6b716493",
+      "category": "admin",
+      "location": "prague",
+      "title": "Národní divadlo: konkurz (vrátná/vrátný Anenského areálu)",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Plný úvazek",
+      "salary": "neuvedeno",
+      "date": "publikováno 14. 9. 2026",
+      "source": "divadlo.cz",
+      "tags": [
+        [
+          "Vrátnice a třídění",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: angličtina; směny nebo noční provoz; vrátnice, recepce nebo ostraha.",
+      "description": "divadlo.cz / Příležitosti / Národní divadlo: konkurz (vrátná/vrátný Anenského areálu) Národní divadlo: konkurz (vrátná/vrátný Anenského areálu) Národní divadlo přijme do směnného provozu vrátnou/vrátného do Anenského areálu v centru Prahy. Publikováno: 14. 09 .2026 Autor: převzato z narodni-divadlo.cz Náplň práce zabezpečování ostrahy a dohled nad kamerovým systémem areálu; pravidelné obchůzky a kontrolní činnost; zabezpečení vstupů a vjezdů vozidel; třídění pošty; obsluha elektronických požárních systémů a zabezpečovacích zařízení; provádění registrace ubytovaných hostů – provoz recepce; provádění elektronické registrace návštěv; zápis ubytovaných hostů. Požadavky trestní bezúhonnost; základní znalost práce na PC; základní znalost anglického jazyka výhodou; příjemné vystupování, spolehlivost, ostražitost a proaktivní přístup. Nabízíme práci na plný úvazek ve směnném provozu (režim denní",
+      "url": "https://www.divadlo.cz/clanky/narodni-divadlo-konkurz-vratna-vratny-anenskeho-arealu/"
+    },
     {
       "id": "80dfa9dbb58f08",
       "category": "children",
@@ -9,9 +34,9 @@
       "title": "Hugo chodí bos – konkurz (asistenta/ka prodeje)",
       "company": "viz inzerát",
       "place": "Praha",
-      "employment": "Plný úvazek",
+      "employment": "Brigáda / DPP nebo DPČ",
       "salary": "neuvedeno (provize)",
-      "date": "publikováno 21. 9. 2026",
+      "date": "publikováno 1. 10. 2026",
       "source": "culturenet.cz",
       "tags": [
         [
@@ -23,8 +48,8 @@
           "warn"
         ]
       ],
-      "why": "Může být zajímavá, ale před reakcí zvažte: kontakt se zákazníky; prodej na místě; angličtina.",
-      "description": "Hugo hledá asistenta/ku prodeje na pražské Letné na plný úvazek! Hledáme tvůrce radosti pro naše hračkářství. Dostaňte spolu s námi české hračky k dětem. Sdílet Hugo je jediné ryze české hračkářství, které raketově roste a přináší neustále novinky. Hledáme někoho, kdo chce být součástí něčeho, co dává smysl. Hledáme nadšence, který: bude s úsměvem radit zákazníkům s výběrem a pomáhat s prodejem se nebojí komunikovat v češtině i angličtině je spolehlivý, samostatný a umí si věci pohlídat má rád děti, hravost a smysluplnou práci pomůže udržovat obchod krásný, přehledný a plný radosti zvládne spolupracovat s týmem i zapojit se tam, kde je potřeba Nabízíme: hodnotnou odměnu s provizí smlouva na plný úvazek krásné prostředí plné inspirativních hraček a zákazníků na Praze 7 na Letné přátelský tým a rodinnou atmosféru bez zbytečné byrokracie zkušenost, která dává smysl Pokud vás nabídka zaujala",
+      "why": "Může být zajímavá, ale před reakcí zvažte: kontakt se zákazníky; prodej na místě; angličtina; brigáda nebo kratší úvazek.",
+      "description": "Hugo hledá asistenta/ku prodeje na pražské Letné a v Modřanech, na plný úvazek! Hledáme dalšího tvůrce radosti do našeho hračkářství. Pozice je ideální i pro studenty; domluvit se můžeme na brigádě, zkráceném i plném úvazku. Sdílet Hugo je ryze české hračkářství, které roste, přináší nové nápady a pomáhá dostávat krásné a smysluplné hračky k dětem. Hledáme někoho, kdo chce být součástí něčeho, co dává smysl, a zároveň ho baví práce s lidmi. Hledáme někoho, kdo: bude s úsměvem radit zákazníkům s výběrem a pomáhat s prodejem se nebojí komunikovat v češtině a zvládne se domluvit i anglicky je spolehlivý, samostatný a umí si věci pohlídat má rád děti, hravost a příjemnou práci s lidmi pomůže udržovat obchod krásný, přehledný a plný radosti zvládne spolupracovat s týmem a zapojit se tam, kde je zrovna potřeba Nabízíme: brigádu, zkrácený nebo plný úvazek podle domluvy férovou odměnu s možností",
       "url": "https://www.culturenet.cz/prace/hugo-chodi-bos-konkurz-asistenta-ka-prodeje/"
     },
     {
@@ -48,34 +73,9 @@
           "warn"
         ]
       ],
-      "why": "Může být zajímavá, ale před reakcí zvažte: směny; brigáda nebo kratší úvazek; lehčí manuální práce nebo výkonové normy.",
+      "why": "Může být zajímavá, ale před reakcí zvažte: prodej na místě; směny nebo noční provoz; brigáda nebo kratší úvazek; lehčí manuální práce nebo výkonové normy.",
       "description": "Brigáda v Knihobotu - Hostivař zpět na výpis Praha 15, CZ Logistika a zásobování Skladník Brigáda Základní 180 - 210 Kč/hodinu Knihobot & Bookbot je největší re-commerce knihkupectví v Česku. Každý měsíc pošleme 400 000 knih do 40 zemí světa - a každá z nich prošla rukama někoho jako ty. Co u nás budeš dělat? Zařazuješ knihy do regálů, pickuješ nebo kompletuješ objednávky nebo knížky fotíš a vyhodnocuješ jejich stav. Jde o manuální práci se standardizovanými postupy. Domů jdeš s čistou hlavou. Co ti nabízíme? Brigádu, která se ti vejde do rozvrhu. Sám/a si vybereš směny, které se ti hodí. Nemáme pevné rozvrhy ani povinné dny. 4hodinové bloky PO-NE (v blocích 8-12, 12-16, 16-20 ) 2hodinové bloky PO–NE během celého dne od 6:00 do 22:00 Až 210 Kč/h Základní mzda: 180 Kč/hod , když postoupíš na činnost focení, tak dalších +10 Kč/h. Výkonnostní bonus: až 20 Kč/hod. Měříme rychlost a kvalitu, ",
       "url": "https://jobs.recruitis.io/knihobot/458172-brigada-v-knihobotu-hostivar"
-    },
-    {
-      "id": "59664e6b716493",
-      "category": "admin",
-      "location": "prague",
-      "title": "Národní divadlo: konkurz (vrátná/vrátný Anenského areálu)",
-      "company": "viz inzerát",
-      "place": "Praha",
-      "employment": "Plný úvazek",
-      "salary": "neuvedeno",
-      "date": "publikováno 14. 9. 2026",
-      "source": "divadlo.cz",
-      "tags": [
-        [
-          "Vrátnice a třídění",
-          ""
-        ],
-        [
-          "Ke zvážení",
-          "warn"
-        ]
-      ],
-      "why": "Může být zajímavá, ale před reakcí zvažte: angličtina; směny nebo noční provoz; vrátnice, recepce nebo ostraha.",
-      "description": "Národní divadlo přijme na plný úvazek vrátnou/vrátného do Anenského areálu v centru Prahy. Náplní je ostraha, dohled nad kamerovým systémem, obchůzky, zabezpečení vstupů, třídění pošty a registrace návštěv a hostů. Jde o směnný provoz s denními i nočními směnami. Požadována je základní práce na PC; základní angličtina je pouze výhodou.",
-      "url": "https://www.divadlo.cz/clanky/narodni-divadlo-konkurz-vratna-vratny-anenskeho-arealu/"
     }
   ]
 }
