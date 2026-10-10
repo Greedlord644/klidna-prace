@@ -1,7 +1,32 @@
 {
-  "checked_at": "2026-10-10T11:01:18.998809+00:00",
+  "checked_at": "2026-10-10T11:15:56.282043+00:00",
   "checked_display": "10. října 2026",
   "jobs": [
+    {
+      "id": "42a7703f03ed59",
+      "category": "ozp",
+      "location": "prague",
+      "title": "Asistent/ka personálního odd.pouze pro osoby v invalidním důchodu v Autovars Praha, s.r.o. Praha, Volnámísta.cz",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Zkrácený úvazek",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "volnamista.cz",
+      "tags": [
+        [
+          "Vhodné pro OZP",
+          "ozp"
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: brigáda nebo kratší úvazek.",
+      "description": "Asistent/ka personálního odd.pouze pro osoby v invalidním důchodu Jsme chráněným pracovištěm a věříme, že každý má mít příležitost uplatnit svůj talent. Do našeho týmu hledáme kolegu/kolegyni na pozici personálního asistenta, která je vytvořena speciálně pro osoby s přiznaným invalidním důchodem. Co bude vaší náplní práce? Nečekejte žádný stres. Práci společně nastavíme tak, aby odpovídala vašemu tempu a zdravotnímu stavu: Administrativa: Správa a zakládání dokumentů v osobních složkách zaměstnanců. Inzerce: Zveřejňování volných míst na pracovních portálech. Komunikace: Třídění životopisů a domlouvání termínů pohovorů (e-mailem či telefonicky). Podpora týmu: Pomoc s přípravou dokumentů. IT: Zadávání do interní databáze, znalost Excel, Outlook, Word ap. Co od vás potřebujeme? Status OZP: Pozice je určena výhradně pro osoby s invalidním důchodem (1., 2. nebo 3. stupně). Uživatelská znalost",
+      "url": "https://www.volnamista.cz/nabidka-prace/asistentka-personalniho-oddpouze-pro-osoby-v-invalidnim-duchodu/209883531"
+    },
     {
       "id": "59664e6b716493",
       "category": "admin",
