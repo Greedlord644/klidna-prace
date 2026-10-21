@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-21T14:34:42.013620+00:00",
+  "checked_at": "2026-10-21T14:47:11.160064+00:00",
   "checked_display": "21. října 2026",
   "jobs": [
     {
@@ -143,31 +143,6 @@
       "why": "Může být zajímavá, ale před reakcí zvažte: brigáda nebo kratší úvazek.",
       "description": "Asistent/ka pedagoga Základní škola, Praha 8, Hovorčovická 11 nabízí na doplnění svého pedagogického sboru pozici asistenta/ky pedagoga . Nástup ihned. úvazek 0,75 Nabízíme: příjemné pracovní prostředí, nenárokové složky platu dle skutečně odvedené práce (3krát ročně odměny), možnost dalšího vzdělávání. Čerpání z FKSP: penzijní připojištění, školní stravování, multisport karta a příspěvek na dovolenou. Přihlášky včetně životopisu zasílejte na reditel@zshovorcovicka.cz Typ úvazku: Práce na zkrácený úvazek Odměna: 22 000 – 28 000 Kč / měsíc Kontaktní telefon: +420732758448 {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressCountry': 'CZ', 'streetAddress': 'Hovorčovická 1281/11, 182 00 Praha', 'addressLocality': 'Praha', 'addressRegion': 'Hlavní město Praha', 'postalCode': '18200'}}",
       "url": "https://edu.gov.cz/job/zakladni-skola-praha-8-hovorcovicka-11-praha-8-kobylisy-zkraceny-uvazek-asistent-ka-pedagoga/"
-    },
-    {
-      "id": "8d207114536543",
-      "category": "admin",
-      "location": "prague",
-      "title": "Dobrá práce: Asistentka showroomu + Informace ZDE",
-      "company": "viz inzerát",
-      "place": "Praha",
-      "employment": "Brigáda / DPP nebo DPČ",
-      "salary": "neuvedeno",
-      "date": "ověřeno dnes",
-      "source": "dobraprace.cz",
-      "tags": [
-        [
-          "Archivace a evidence",
-          ""
-        ],
-        [
-          "Ke zvážení",
-          "warn"
-        ]
-      ],
-      "why": "Může být zajímavá, ale před reakcí zvažte: kontakt se zákazníky.",
-      "description": "Asistentka showroomu Pro našeho klienta, českou společnost, která působí na trhu od roku 1991 a specializuje se na výrobu moderních interiérových prvků v nadčasovém designu, hledáme vhodnou kandidátku na pozici Asistentka showroomu Staňte se součástí designového showroomu v Praze a buďte první osobou, se kterou se naši zákazníci a partneři setkají. Hledáme reprezentativní, komunikativní a spolehlivou kolegyni/kolegu, která zajistí plynulý chod showroomu a příjemnou atmosféru během schůzek se zákazníky. Náplň práce: Zajištění provozu showroomu Obsluha návštěv showroomu (přivítání hostů, příprava kávy, základní péče o zákazníky) Komunikace s koncovými zákazníky, architekty a obchodními partnery Poskytování základních informací o produktech a orientace zákazníků v showroomu Provázení zákazníků showroomem po absolvování interního zaškolení Práce se systémem K2 a zpracování objednávek – čtení",
-      "url": "https://www.dobraprace.cz/2023890-asistentka-showroomu.html"
     },
     {
       "id": "99bcfb42793758",
@@ -343,31 +318,6 @@
       "why": "Může být zajímavá, ale před reakcí zvažte: prodej na místě; brigáda nebo kratší úvazek.",
       "description": "Pracovnice/-ík administrativy - call centra Kojetice u Prahy, Neratovice Firma Uzeniny Beta s 30-ti letou tradicí v oblasti výroby a prodeje uzenin přijme pracovníka na pozici PRACOVNICE/-ÍK ADMINISTRATIVY - CALL CENTRA Co u nás budete dělat? kompletní administrativa spojená s chodem potravinářského závodu. Tj. příjem objednávek, komunikace s odběrateli, vystavování dokladů, zpracování došlých dokladů v interním systému, evidence přijatých dokladů, třídění dle číselných řad, příprava podkladů pro účetní objednávky vybavení, kancelářských potřeb, firemního oblečení komunikace s dodavateli, našimi řidiči na trasách, administrativa řidičů po jejich návratu a další běžná činnost spojená s pozicí pracovnice/-íka call centra a administrativou. Co musíte znát, mít a umět? práce s PC - interní program (CEZAR-zaučení) OpenOffice, psaní textu, práce s tabulkami internet komunikace s odběrateli – z",
       "url": "https://www.volnamista.cz/nabidka-prace/pracovnice-ik-administrativy-call-centra-kojetice-u-prahy-neratovice/208934589"
-    },
-    {
-      "id": "601dd6cf8e8bc0",
-      "category": "admin",
-      "location": "prague",
-      "title": "Asistent/ka prodeje - brigáda - Fashion Arena Outlet Praha",
-      "company": "viz inzerát",
-      "place": "Praha",
-      "employment": "Brigáda / DPP nebo DPČ",
-      "salary": "neuvedeno",
-      "date": "ověřeno dnes",
-      "source": "dobraprace.cz",
-      "tags": [
-        [
-          "Archivace a evidence",
-          ""
-        ],
-        [
-          "Ke zvážení",
-          "warn"
-        ]
-      ],
-      "why": "Může být zajímavá, ale před reakcí zvažte: prodej na místě; brigáda nebo kratší úvazek.",
-      "description": "Asistent/ka prodeje - brigáda - Fashion Arena Outlet Praha Když toužíš být hrdý na to, co prodáváš… BUSHMAN Do naší prodejny ve Fashion Aréně v Praze hledáme na DPP nebo DPČ nového brigádníka/brigádnici. {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressCountry': 'CS', 'addressLocality': 'Praha', 'addressRegion': 'Praha'}}",
-      "url": "https://www.dobraprace.cz/2023988-asistent-ka-prodeje-brigada-praha.html"
     },
     {
       "id": "f8e8392966bc79",
@@ -566,7 +516,7 @@
         ]
       ],
       "why": "Může být zajímavá, ale před reakcí zvažte: směny nebo noční provoz; brigáda nebo kratší úvazek; vrátnice, recepce nebo ostraha.",
-      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 7 i0 754 i0 14900\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odpovědět na in",
+      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 754 i0 149 i0 00\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odpovědět na inz",
       "url": "https://www.jenprace.cz/nabidka/45il2f/vratny-personalni-vratnice-ostraha-arealu-v-jirnech-od-135-kc-priplatky"
     },
     {
