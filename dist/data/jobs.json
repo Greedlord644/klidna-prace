@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-22T22:46:16.461620+00:00",
+  "checked_at": "2026-10-22T23:01:26.067935+00:00",
   "checked_display": "22. října 2026",
   "jobs": [
     {
@@ -147,6 +147,31 @@
       "why": "Může být zajímavá, ale před reakcí zvažte: brigáda nebo kratší úvazek.",
       "description": "Asistent/ka pedagoga Základní škola, Praha 8, Hovorčovická 11 nabízí na doplnění svého pedagogického sboru pozici asistenta/ky pedagoga . Nástup ihned. úvazek 0,75 Nabízíme: příjemné pracovní prostředí, nenárokové složky platu dle skutečně odvedené práce (3krát ročně odměny), možnost dalšího vzdělávání. Čerpání z FKSP: penzijní připojištění, školní stravování, multisport karta a příspěvek na dovolenou. Přihlášky včetně životopisu zasílejte na reditel@zshovorcovicka.cz Typ úvazku: Práce na zkrácený úvazek Odměna: 22 000 – 28 000 Kč / měsíc Kontaktní telefon: +420732758448 {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressCountry': 'CZ', 'streetAddress': 'Hovorčovická 1281/11, 182 00 Praha', 'addressLocality': 'Praha', 'addressRegion': 'Hlavní město Praha', 'postalCode': '18200'}}",
       "url": "https://edu.gov.cz/job/zakladni-skola-praha-8-hovorcovicka-11-praha-8-kobylisy-zkraceny-uvazek-asistent-ka-pedagoga/"
+    },
+    {
+      "id": "99bcfb42793758",
+      "category": "admin",
+      "location": "prague",
+      "title": "Podpora obchodního back office a logistiky",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Plný úvazek",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "jenprace.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: kontakt se zákazníky.",
+      "description": "Podpora obchodního back office a logistiky Pro našeho klienta, českou společnost působící na trhu speciálních, legovaných a nerezových ocelí, hledáme spolehlivou a aktivní podporu obchodního oddělení. Pokud Vás baví obchodní administrativa, komunikace se zákazníky, organizace logistiky, může být tato příležitost právě pro Vás. Popis pozice: Administrativní podpora obchodního týmu Správa objednávek, smluv a fakturace Evidence a správa zakázek v systému Komunikace se zákazníky a dodavateli Práce v MS Office a interních systémech Koordinace spolupráce napříč společností Organizace přeprav a komunikace s logistickými partnery Řešení operativní agendy a denních úkolů Kontrola správnosti a úplnosti obchodní dokumentace Profil kandidáta: SŠ vzdělání AJ nebo NJ na komunikativní úrovni Uživatelská znalost MS Office Organizační a komunikační dovednosti Samostatnost, pečlivost a zodpovědnost Priori",
+      "url": "https://www.jenprace.cz/nabidka/6mzh71/podpora-obchodniho-back-office-a-logistiky"
     },
     {
       "id": "e622a6ad82de0d",
