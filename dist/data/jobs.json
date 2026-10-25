@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-25T09:46:22.052626+00:00",
+  "checked_at": "2026-10-25T10:01:32.102628+00:00",
   "checked_display": "25. října 2026",
   "jobs": [
     {
@@ -22,6 +22,27 @@
       "why": "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků.",
       "description": "Asistent/ka pedagoga Hledáme asistenta pedagoga na plný úvazek Máte chuť pomáhat dětem na jejich vzdělávací cestě a být součástí podpůrného týmu? Pak hledáme právě vás! Přijmeme asistenta pedagoga na plný úvazek s nástupem od 1. září 2025. Co bude vaší hlavní náplní práce? – Individuální a skupinová podpora dětí se speciálními vzdělávacími potřebami. – Spolupráce s učiteli na tvorbě a realizaci individuálních vzdělávacích plánů. – Pomoc při adaptaci dětí na školní prostředí. – Asistence při výuce a mimoškolních aktivitách. – Komunikace s rodiči (pod vedením pedagoga). Co od vás očekáváme? – Kvalifikace asistenta pedagoga dle zákona č. 563/2004 Sb. (zákon o pedagogických pracovnících), ideálně již dokončená nebo v průběhu studia. – Empatický a trpělivý přístup k dětem. – Schopnost práce v týmu a dobré komunikační dovednosti. – Spolehlivost a zodpovědnost. – Trestní bezúhonnost. Co vám nab",
       "url": "https://edu.gov.cz/job/materska-skola-vokovicka-praha-plny-uvazek-asistent-ka-pedagoga/"
+    },
+    {
+      "id": "3a7f7be6b4f0bf",
+      "category": "admin",
+      "location": "prague",
+      "title": "Metodik spisové služby a archivnictví Policejní prezidium ČR",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Plný úvazek",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "dobraprace.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků.",
+      "description": "Metodik spisové služby a archivnictví Policejní prezidium ČR Metodik spisové služby a archivnictví Policejní prezidium ČR – oddělení řízení, metodiky a kontroly spisové služby hledá spolehlivého kolegu nebo kolegyni, který/á se orientuje v oblasti archivnictví, spisové služby a má zkušenost s elektronickými systémy spisové služby. Pokud Tě láká kombinace metodické práce, zajištění souladu s legislativou a možnost ovlivňovat fungování spisové služby napříč celou Policií ČR – pak čti dál. ________________________________________ Místo výkonu práce: Praha 6 | Nástup: dle dohody | Pracovní poměr: plný úvazek {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressCountry': 'CS', 'addressLocality': 'Praha', 'addressRegion': 'Praha'}}",
+      "url": "https://www.dobraprace.cz/2011743-metodik-spisove-sluzby-policejni-prezidium-cr.html"
     },
     {
       "id": "e4724ac10e29e3",
