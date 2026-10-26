@@ -1,7 +1,28 @@
 {
-  "checked_at": "2026-10-26T14:31:29.241733+00:00",
+  "checked_at": "2026-10-26T14:46:13.864028+00:00",
   "checked_display": "26. října 2026",
   "jobs": [
+    {
+      "id": "0c01947e7b5c98",
+      "category": "admin",
+      "location": "prague",
+      "title": "Referent/ka administrativy a zpracování dokumentů v Stavební bytové družstvo Praha, družstvo Praha, Volnámísta.cz",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Zkrácený úvazek",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "volnamista.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků.",
+      "description": "Referent/ka administrativy a zpracování dokumentů Máte rádi pořádek, systém a práci, kde je za Vámi vidět výsledek? Do týmu SBD Praha hledáme pečlivého a spolehlivého kolegu či kolegyni, který/á bude zajišťovat centrální příjem a evidenci dokumentů a pomůže nám s jejich správným zpracováním a předáním dál. Centrálním příjmem denně prochází fyzická i elektronická pošta a řada dokumentů důležitých pro správu bytových domů. Vaším úkolem bude zajistit, aby byly správně zaevidované, digitalizované a dostaly se včas tam, kam mají. Co Vás u nás čeká? příjem, výdej, evidence a rozdělování fyzické i elektronické pošty skenování, evidence a zpracování přijatých dokumentů práce s kmenovými daty a jejich aktualizace v informačním systému archivace a vytěžování dokumentů každodenní práce s e-mailem a interními systémy spolupráce s kolegy napříč firmou další administrativní činnosti související se slu",
+      "url": "https://www.volnamista.cz/nabidka-prace/referentka-administrativy-a-zpracovani-dokumentu/211346214"
+    },
     {
       "id": "e38c5e414afe41",
       "category": "children",
