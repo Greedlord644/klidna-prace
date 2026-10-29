@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-10-29T06:16:17.056294+00:00",
+  "checked_at": "2026-10-29T06:31:21.710434+00:00",
   "checked_display": "29. října 2026",
   "jobs": [
     {
@@ -320,6 +320,31 @@
       "url": "https://www.volnamista.cz/nabidka-prace/asistent-danoveho-poradce/211283202"
     },
     {
+      "id": "93ac479e83fa78",
+      "category": "admin",
+      "location": "prague",
+      "title": "Asistent/ka prodeje - brigáda. OC VIVO! Hostivař Praha v POMPO spol. s r.o. Praha, Volnámísta.cz",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Brigáda / DPP nebo DPČ",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "volnamista.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: prodej na místě; brigáda nebo kratší úvazek.",
+      "description": "Asistent/ka prodeje - brigáda. OC VIVO! Hostivař Praha Pro naši prodejnu hraček - provozovna v OC VIVO! Hostivař Praha, hledáme brigádníka/nici. Požadujeme: - aktivní přístup - organizační a komunikační schopnosti - spolehlivost, flexibilitu a pečlivost - bezúhonnost - uživatelskou znalost PC - plnoletost. Nabízíme: mzda: 135,- Kč/hod. Nástup: možný ihned. {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressLocality': 'Hlavní město Praha', 'addressRegion': 'Hlavní město Praha', 'addressCountry': 'CZ'}}",
+      "url": "https://www.volnamista.cz/nabidka-prace/asistentka-prodeje-brigada-oc-vivo-hostivar-praha/211359933"
+    },
+    {
       "id": "da4de0b62f6120",
       "category": "admin",
       "location": "prague",
@@ -466,7 +491,7 @@
         ]
       ],
       "why": "Může být zajímavá, ale před reakcí zvažte: směny nebo noční provoz; brigáda nebo kratší úvazek; vrátnice, recepce nebo ostraha.",
-      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 41 i0 4 i0 9 i0 0 i0 0\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odpovědět ",
+      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 77 i0 54 i0 149 i0 00\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odpovědět n",
       "url": "https://www.jenprace.cz/nabidka/45il2f/vratny-personalni-vratnice-ostraha-arealu-v-jirnech-od-135-kc-priplatky"
     },
     {
