@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-03T18:31:32.655007+00:00",
+  "checked_at": "2026-11-03T18:46:13.751267+00:00",
   "checked_display": "3. listopadu 2026",
   "jobs": [
     {
@@ -299,6 +299,31 @@
       "url": "https://www.volnamista.cz/nabidka-prace/asistentka-prodeje/211353219"
     },
     {
+      "id": "2041291ef68f41",
+      "category": "admin",
+      "location": "prague",
+      "title": "Módní asistent/ka v Modiana CZ Praha, Volnámísta.cz",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Brigáda / DPP nebo DPČ",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "volnamista.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: prodej na místě; brigáda nebo kratší úvazek.",
+      "description": "Módní asistent/ka Pro prodejnu Lee Cooper ve Fashion Areně Štěrboholy přijmeme brigádníky na prodej značkové módy Budete pracovat s módním oblečením a doplňky. Starat se o zákazníky. Plánování směn je možné dle Vašich časových možností. {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'streetAddress': 'Zamenhofova', 'addressLocality': 'Hlavní město Praha', 'addressRegion': 'Hlavní město Praha', 'addressCountry': 'CZ'}}",
+      "url": "https://www.volnamista.cz/nabidka-prace/modni-asistentka/209757393"
+    },
+    {
       "id": "13aba8bd545a64",
       "category": "ozp",
       "location": "prague",
@@ -470,7 +495,7 @@
         ]
       ],
       "why": "Může být zajímavá, ale před reakcí zvažte: směny nebo noční provoz; brigáda nebo kratší úvazek; vrátnice, recepce nebo ostraha.",
-      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 77 i0 541 i0 49 i0 00\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odpovědět n",
+      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 7 i0 7 i0 54 i0 1 i0 4 i0 90 i0 0\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně:",
       "url": "https://www.jenprace.cz/nabidka/45il2f/vratny-personalni-vratnice-ostraha-arealu-v-jirnech-od-135-kc-priplatky"
     },
     {
