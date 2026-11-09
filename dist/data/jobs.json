@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-09T19:16:05.805836+00:00",
+  "checked_at": "2026-11-09T19:31:39.927346+00:00",
   "checked_display": "9. listopadu 2026",
   "jobs": [
     {
@@ -76,31 +76,6 @@
       "why": "Může být zajímavá, ale před reakcí zvažte: prodej na místě.",
       "description": "Asistentka prodeje ve svatebním salonu, Praha 9 Asistentka prodeje ve svatebním salonu, Praha 9 Co u nás budete dělat? Hledáme nové kolegyně do svatebního salonu v Praze 9! Máš chuť pracovat v krásném prostředí svatebního centra, jsi komunikativní a baví tě práce s lidmi? Pak hledáme přesně tebe! Hlavní náplní práce je asistence při výběru svatebních a společenských šatů, doporučení vhodného modelu a pomoc s nalezením těch pravých šatů. Okrajově s tím související drobná administrativa, zajištění chodu salonu. V případě zájmu nám zašli životopis s fotografií. Co musíte znát, mít a umět? - spolehlivost a profesionalitu - proaktivní přístup - komunikační schopnosti - příjemné vystupování a upravený vzhled - zkušenost s prodejem výhodou, není podmínkou - ochotu pracovat i o víkendu Co Vám nabízíme - příjemné prostřední zavedené firmy a mladý kolektiv - získáte kolegy, kteří Vám pomohou v zač",
       "url": "https://www.volnamista.cz/nabidka-prace/asistentka-prodeje-ve-svatebnim-salonu-praha-9/211388352"
-    },
-    {
-      "id": "524011c2df6088",
-      "category": "admin",
-      "location": "prague",
-      "title": "Vrátný/vrátná - Edu.cz",
-      "company": "viz inzerát",
-      "place": "Praha",
-      "employment": "Plný úvazek",
-      "salary": "neuvedeno",
-      "date": "ověřeno dnes",
-      "source": "edu.gov.cz",
-      "tags": [
-        [
-          "Vrátnice a třídění",
-          ""
-        ],
-        [
-          "Ke zvážení",
-          "warn"
-        ]
-      ],
-      "why": "Může být zajímavá, ale před reakcí zvažte: vrátnice, recepce nebo ostraha.",
-      "description": "Vrátný/vrátná Pro naše gymnázium hledáme vrátného/vrátnou na plný úvazek, jako dlouhodobý zástup po dobu nemoci. Vhodné i pro aktivního seniora. Nástup možný ihned. CV zasílejte na: obstova@gymnchod.cz Kontaktní telefon: 602253239 {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressCountry': 'CZ', 'streetAddress': 'Chodovická 2250/36, 193 00 Praha', 'addressLocality': 'Praha', 'addressRegion': 'Hlavní město Praha', 'postalCode': '19300'}}",
-      "url": "https://edu.gov.cz/job/gymnazium-praha-9-chodovicka-2250-praha-plny-uvazek-vratny-vratna/"
     },
     {
       "id": "06f3f1feacbe48",
