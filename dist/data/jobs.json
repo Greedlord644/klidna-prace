@@ -1,7 +1,28 @@
 {
-  "checked_at": "2026-11-10T12:31:35.683003+00:00",
+  "checked_at": "2026-11-10T12:46:13.502914+00:00",
   "checked_display": "10. listopadu 2026",
   "jobs": [
+    {
+      "id": "68e2871e57306a",
+      "category": "admin",
+      "location": "prague",
+      "title": "Asistent/asistentka v reklamní agentuře v Veterinární klinika Panda Praha, Volnámísta.cz",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Plný úvazek",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "volnamista.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ]
+      ],
+      "why": "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků.",
+      "description": "Asistent/asistentka v reklamní agentuře Do reklamní agentury Panda Production hledáme kolegu/kolegyni na produkční a administrativní pozici. Práce probíhá přímo v našich kancelářích na pražských Vinohradech. Náplň práce: Zadávání dat do systému Podpora provozu kanceláře Asistence při plánování eventů Požadavky: Spolehlivost Uživatelská znalost MS Office Znalost AJ Nabízíme: Dlouhodobou spolupráci na HPP Příjemný kolektiv Odpovídající finanční ohodnocení V případě zájmu nás kontaktujte na kolbaba@pandaproduction.cz {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'streetAddress': 'Krkonošská 1557/8', 'addressLocality': 'Hlavní město Praha', 'addressRegion': 'Hlavní město Praha', 'addressCountry': 'CZ'}}",
+      "url": "https://www.volnamista.cz/nabidka-prace/asistentasistentka-v-reklamni-agenture/210145964"
+    },
     {
       "id": "ef729ddcf1611e",
       "category": "admin",
