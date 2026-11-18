@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-18T17:31:47.328574+00:00",
+  "checked_at": "2026-11-18T17:46:15.569475+00:00",
   "checked_display": "18. listopadu 2026",
   "jobs": [
     {
@@ -64,6 +64,31 @@
       "why": "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků.",
       "description": "Asistent / asistentka pedagoga Střední škola a Mateřská škola Aloyse Klara Hledáme asistenta/ku pedagoga pro mateřskou školu pro děti se speciálními vzdělávacími potřebami v Praze 4 na plný úvazek. Požadujeme: středoškolské vzdělání s maturitou bezúhonnost Výhodou: kurz asistenta pedagoga praxe Finanční ohodnocení v 8. platové třídě. Místo práce: Praha 4 Termín nástupu: leden 2027 nebo dle dohody Kontaktní osoba: Michaela Brožová Telefon: 241 727 033 {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'addressLocality': 'Hlavní město Praha', 'addressRegion': 'Hlavní město Praha', 'addressCountry': 'CZ'}}",
       "url": "https://www.volnamista.cz/nabidka-prace/asistent-asistentka-pedagoga/211448163"
+    },
+    {
+      "id": "667b74c8aea6c2",
+      "category": "admin",
+      "location": "near",
+      "title": "Řidič dodávky sk. B do 3,5t na svoz textilu ze sběrných kontejnerů, depo Říčany v Mondo transport,s.r.o. Praha, Volnámísta.cz",
+      "company": "viz inzerát",
+      "place": "Babice a okolí",
+      "employment": "Brigáda / DPP nebo DPČ",
+      "salary": "neuvedeno",
+      "date": "ověřeno dnes",
+      "source": "volnamista.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: brigáda nebo kratší úvazek.",
+      "description": "Řidič dodávky sk. B do 3,5t na svoz textilu ze sběrných kontejnerů, depo Říčany Přijmeme dlouhodobě spolehlivého a fyzicky zdatného řidiče dodávky sk.B do 3,5t na pravidelný svoz textilu ze sběrných boxů depo Říčany. Jedná se o pravidelnou linku, a to PO - PÁ (cca. 06:30 - 17:00 dle trasy, nebo je možnost svozy provádět i v noci ). Po vzájemné dohodě možnost firemní dodávky s parkováním doma. Odměna 1.800 - 2.200,-Kč/směna ( čistého ). Možno na HPP, DPČ. Nástup možný ihned, dle dohody. V případě zájmu volejte 774491555. {'@type': 'Place', 'address': {'@type': 'PostalAddress', 'streetAddress': 'Jičínská 226/17', 'addressLocality': 'Hlavní město Praha', 'addressRegion': 'Hlavní město Praha', 'addressCountry': 'CZ'}}",
+      "url": "https://www.volnamista.cz/nabidka-prace/ridic-dodavky-sk-b-do-35t-na-svoz-textilu-ze-sbernych-kontejneru-depo-ricany/211472502"
     },
     {
       "id": "ef729ddcf1611e",
@@ -812,7 +837,7 @@
         ]
       ],
       "why": "Může být zajímavá, ale před reakcí zvažte: směny nebo noční provoz; brigáda nebo kratší úvazek; vrátnice, recepce nebo ostraha.",
-      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 7 i0 7 i0 5 i0 4 i0 1 i0 4900\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odp",
+      "description": "Vrátný personální vrátnice-ostraha areálu v Jirnech od 135,-Kč + příplatky. O nás Stabilní bezpečnostní služba působící po celé ČR se silným zázemím a podporou. Náplň práce: Přijmeme uchazeče z řad OZP (invalidní důchodce 1.- 3. stupně), na pracovní pozici vrátný objektu v Jirnech. Nenáročné kontrolní činnosti na vrátnici, informační činnost, pozice pro odpovědné osoby, směny. Velmi příjemné čisté pracovní prostředí. Vhodné pro muže i ženy i bez praxe a certifikátu. Pro neinvalidní uchazeče nabízíme práci na dohodu o provedení práce. Pokud nevlastníte certifikát strážného, zprostředkujeme Vám jeho získání - není podmínkou pro přijetí na pracovní pozici. Praxe nerozhoduje, zkrácený úvazek vhodný pro invalidní uchazeče. Bližší informace Vám rádi sdělíme na kontaktním telefonu: i0 7 i0 7 i0 54 i0 1 i0 4900\">Zobrazit tel. číslo nebo e-mailu: e-mail přes odpovědní formulář , případně: Odpověd",
       "url": "https://www.jenprace.cz/nabidka/45il2f/vratny-personalni-vratnice-ostraha-arealu-v-jirnech-od-135-kc-priplatky"
     },
     {
