@@ -1,5 +1,5 @@
 {
-  "checked_at": "2026-11-23T07:16:09.349658+00:00",
+  "checked_at": "2026-11-23T07:31:10.478073+00:00",
   "checked_display": "23. listopadu 2026",
   "jobs": [
     {
@@ -11,15 +11,46 @@
       "place": "Praha",
       "employment": "Brigáda / DPP nebo DPČ",
       "salary": "180 - 210 Kč/hodinu",
-      "date": "ověřeno 23. 11. 2026",
+      "date": "ověřeno dnes",
       "source": "jobs.recruitis.io",
       "tags": [
-        ["Knihy a text", ""],
-        ["Ke zvážení", "warn"]
+        [
+          "Knihy a text",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
       ],
-      "why": "Může být zajímavá kvůli práci s knihami, ale před reakcí zvažte: směny; brigáda; lehčí manuální práce a výkonové normy.",
-      "description": "Brigáda v Knihobotu v Praze 15 – Hostivaři. Náplní je zařazování knih do regálů, chystání a balení objednávek, focení knih a hodnocení jejich stavu. Zkušenosti nejsou potřeba. Jde o DPP do 60 hodin měsíčně, směny mezi 6 a 22 hodinou. Práce je částečně manuální a zaměstnavatel měří rychlost a kvalitu.",
+      "why": "Může být zajímavá, ale před reakcí zvažte: směny nebo noční provoz; brigáda nebo kratší úvazek; lehčí manuální práce nebo výkonové normy.",
+      "description": "Brigáda v Knihobotu - Hostivař zpět na výpis Praha 15, CZ Logistika a zásobování Skladník Brigáda Základní 180 - 210 Kč/hodinu Hledáme brigádníky do našeho skladu v Hostivaři. Budeš zařazovat knihy do regálů, chystat a balit objednávky nebo knihy fotit a hodnotit jejich stav. Zkušenosti nepotřebuješ, všechno tě naučíme. Co nabízíme: 180-210 Kč/h. Základ je 180 Kč/h, k tomu výkonnostní bonus až 20 Kč/h a za focení dalších 10 Kč/h. Měříme rychlost a kvalitu, takže ti nejlepší si vydělají nejvíc. Směny si vybíráš sám/sama v aplikaci, Po-Ne mezi 6 a 22 hodinou. Hlavní směny jsou 8-12, 12-16 a 16-20, mezi nimi můžeš chodit i na dvouhodinovky. Smlouva na DPP, až 60 hodin měsíčně, výplata jednou měsíčně na účet. Placená dovolená po 80 odpracovaných hodinách. 20% sleva na knihy a VIP tarif, když u nás knihy prodáváš. Vlastní hudba ve sluchátku při práci. Hodíš se k nám, pokud: chceš u nás zůstat",
       "url": "https://jobs.recruitis.io/knihobot/458172-brigada-v-knihobotu-hostivar"
+    },
+    {
+      "id": "8bf5c143cbe201",
+      "category": "admin",
+      "location": "prague",
+      "title": "Studio ReAl - konkurz (architekt/ka - scénograf/ka)",
+      "company": "viz inzerát",
+      "place": "Praha",
+      "employment": "Zkrácený úvazek",
+      "salary": "neuvedeno",
+      "date": "publikováno 19. 11. 2026",
+      "source": "culturenet.cz",
+      "tags": [
+        [
+          "Archivace a evidence",
+          ""
+        ],
+        [
+          "Ke zvážení",
+          "warn"
+        ]
+      ],
+      "why": "Může být zajímavá, ale před reakcí zvažte: brigáda nebo kratší úvazek.",
+      "description": "Jsme studio, které se dlouhodobě zabývá architekturou, scénografií a expozicemi. Do týmu hledáme kolegu*yni, který/á nám pomůže převážně s expozicemi. Sdílet Na čem u nás budete pracovat? Návrhy a realizace expozic a výstav – od autorských konceptů až po prováděcí projekty. Rekonstrukce muzeí, galerií a výstavních prostor (v různém měřítku od dílčích instalací po celé expozice). Koncepční příprava libreta s kurátory . Práce s novými materiály, technologiemi a specifickými profesemi. Co k tomu budete potřebovat? Znalost programů Archicad, SketchUp a Adobe. Samostatnost při řešení svěřených projektů. Dobré organizační schopnosti a pečlivost. Co nabízíme? Částečný úvazek/spolupráci : Ideálně na 2–3 dny v týdnu (přesný rozsah dle dohody). Lokalitu : Kancelář máme přímo v centru na Praze 1 . Zaujali jsme vás? Více o tom, jak přemýšlíme a co tvoříme, najdete na našem webu www.re-al.cz . Pokud ",
+      "url": "https://www.culturenet.cz/prace/studio-real-konkurz-architekt-ka-scenograf-ka/"
     }
   ]
 }
