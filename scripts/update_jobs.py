@@ -23,6 +23,14 @@ ALLOWED_HOSTS = ("jobs.cz", "prace.cz", "jenprace.cz", "dobraprace.cz", "easy-pr
                  "edujob.cz", "izus.cz", "jobs.recruitis.io", "divadlo.cz")
 QUERIES = [
     'Praha redaktor korektor editor "plný úvazek" práce',
+    'Česko korektor korektorka "práce na dálku" práce',
+    'Česko redaktor redaktorka editor editorka remote práce',
+    'Česko "psaní textů" "práce z domova" zaměstnání',
+    'Česko textař textařka home office práce',
+    'Česko nakladatelství ediční redakce knihy práce remote',
+    'Česko literární redaktor editor knih práce',
+    'Česko obsahový redaktor tvorba textů práce na dálku',
+    'Česko anotace knih katalogizace knih práce',
     'Praha archivář archivace digitalizace katalogizace "plný úvazek"',
     'Praha "zadávání dat" evidence dokumentů "plný úvazek"',
     'Říčany Babice administrativa archivace "plný úvazek"',
@@ -33,26 +41,32 @@ QUERIES = [
     'Praha DDM volnočasové aktivity asistent "plný úvazek"',
     'Praha "domov mládeže" asistent pomocný pracovník "plný úvazek"',
     'Říčany ZUŠ DDM asistent práce "plný úvazek"',
-    'Praha asistent kultura knihy hračky práce',
+    'Praha nakladatelství knihy redakce korektury práce',
     'Praha třídění knih bez praxe práce',
-    'Praha vrátný muzeum divadlo galerie práce',
-    'Praha jednoduchá práce asistent bez praxe',
+    'Praha knihkupectví evidence katalogizace knih práce bez prodeje',
 ]
 HARD_REJECT = [
-    r"řidičsk[ýé] průkaz.{0,18}(podmín|nutn|požad|skupin)", r"aktivní řidič",
+    r"\břidič|řidičsk[ýé] průkaz|aktivní řidič|\bkurýr|\brozvoz|svoz",
     r"angličtin.{0,24}(výborn|plynul|pokroč|b2|c1|c2|rodil)", r"english.{0,18}(fluent|b2|c1|c2)",
     r"(požadujeme|podmínkou|nutn|nezbytn).{0,35}(vysokoškol|\bv\.?š\.?)",
     r"(vysokoškol|\bv\.?š\.?).{0,35}(podmín|požad|nutn|nezbytn)",
     r"pedagogick.{0,24}(vzdělán|minimum|kvalifik)",
     r"praxe.{0,25}(podmín|nutn|požad|alespoň|minimálně)", r"minimálně.{0,8}[1-9].{0,8}(let|rok).{0,15}prax",
-    r"pokladn|call centrum|telemarketing|cold call",
+    r"pokladn|recepční|pracovník recepce|call centrum|telemarketing|cold call|\bvrátn|vrátnic|ostra[hž]|strážn|bezpečnostní pracovník|kamerov.{0,20}dohled",
+    r"finanční asistent|finanční porad|účetn|fakturac|daňov|bankéř|pojišťov",
+    r"back[\s-]?office|podpora.{0,25}(obchod|prodej)|obchodní podpora|sales support",
+    r"asistent.{0,25}(prodeje|obchod)|prodejní asistent|showroom|prodavač|obsluha zákazník",
+    r"komunikac.{0,45}(klient|zákazník|dodavatel|veřejnost)|kontakt.{0,35}(klient|zákazník|dodavatel|veřejnost)",
+    r"(klient|zákazník|dodavatel|veřejnost).{0,45}(komunikac|kontakt|péče|jednání)",
+    r"siln.{0,25}komunikační|výborn.{0,25}komunikační|skvěl.{0,25}komunikační|velmi dobr.{0,25}komunikační",
+    r"příjemné vystupování|reprezentativní vystupování|profesionální vystupování|proklient",
     r"oslovován.{0,30}(klient|zákazník)|akvizic.{0,20}(klient|zákazník)",
     r"telefonick.{0,18}(komunik|kontakt|prodej)|vyřizování.{0,25}telefonát",
     r"(organizace|domluv|plánování|koordinace).{0,25}(schůzek|schůzky|termínů|prohlídek)",
     r"správa kalendář|vedení kalendář|networking",
     r"koordinace.{0,30}(schůzek|akcí|administrativních aktivit)|vyřizování.{0,25}(korespondence|telefonát)",
     r"příprava.{0,25}(reportů|reportu|prezentací|prezentace)|více úkolů současně|multitask",
-    r"sekretář|asistent.?(ka)?.{0,20}ředitele|office manager|copywrit|social media",
+    r"sekretář|asistent.?(ka)?.{0,20}ředitele|office manager|social media",
     r"vedoucí|ředitel|manažer|management|team leader|vedení.{0,25}(týmu|lidí|pracovník)|řízení týmu|koordinátor",
     r"komunikační.{0,20}organizační|odolnost vůči stresu|práce pod tlakem",
     r"technik|technické práce|technický pracovník|zvukař|osvětlovač|stavba|bourání scén|údržba technik|elektrotechn|network administrator|software developer|\bit administrator\b|\bdevops\b",
@@ -62,10 +76,13 @@ HARD_REJECT = [
     r"excel.{0,30}(nutn|podmín|požad|nezbytn|pokroč|výborn|velmi dobr)",
     r"(nutn|podmín|požad|nezbytn|pokroč|výborn|velmi dobr|dobrou znalost).{0,30}excel",
 ]
-POSITIVE = ["redaktor", "korektor", "editor", "archiv", "digitaliz", "katalogiz", "evidence dokument",
-            "zadávání dat", "databáz", "knih", "muze", "galeri", "češtin", "text", "zuš",
-            "základní uměleck", "dům dětí", "ddm", "domov mládeže", "volnočas", "asistent",
-            "třídění", "vrátn", "hračk", "fotograf"]
+TEXT_POSITIVE = ["textař", "psaní text", "tvorba text", "autorské text", "kreativní psaní",
+                 "korektur", "korektor", "redaktor", "editor", "editorka", "ediční",
+                 "nakladatel", "literární", "anotac", "rukopis", "copywriter", "content writer"]
+BOOK_POSITIVE = ["knih", "kniž", "katalogiz", "třídění knih", "digitaliz", "archiv"]
+OTHER_POSITIVE = ["evidence dokument", "zadávání dat", "databáz", "muze", "galeri", "češtin", "zuš",
+                  "základní uměleck", "dům dětí", "ddm", "domov mládeže", "volnočas"]
+POSITIVE = TEXT_POSITIVE + BOOK_POSITIVE + OTHER_POSITIVE
 EXPIRED = ["nabídka již není aktivní", "pozice již byla obsazena", "inzerát byl odstraněn",
            "platnost nabídky skončila", "nabídka byla ukončena", "stránka nenalezena"]
 
@@ -84,27 +101,21 @@ DIRECT_SOURCES = {
     "divadlo.cz": (["https://www.divadlo.cz/ceske-divadlo/prilezitosti/"], r"/clanky/[^/?]+/?$"),
 }
 SEED_URLS = {
-    "https://www.culturenet.cz/prace/hugo-chodi-bos-konkurz-asistenta-ka-prodeje/",
     "https://jobs.recruitis.io/knihobot/458172-brigada-v-knihobotu-hostivar",
-    "https://www.divadlo.cz/clanky/narodni-divadlo-konkurz-vratna-vratny-anenskeho-arealu/",
 }
 
-LINK_HINTS = tuple(POSITIVE) + ("administrativ", "dokument", "evidence", "spis", "kulturn", "uměleck",
-                                     "děti", "mládež", "absolvent", "back office", "vrátn", "knih", "hračk")
+LINK_HINTS = tuple(POSITIVE) + ("dokument", "evidence", "spis", "kulturn", "uměleck", "děti", "mládež")
 STARTUPJOBS_SLUG_HINTS = (
-    "admin", "asistent", "assistant", "back-office", "data-entry", "evidence",
+    "writer", "copywriter", "content-writer", "data-entry", "evidence",
     "dokument", "archiv", "katalog", "editor", "redaktor", "korektor", "text",
     "content", "knihov", "muze", "galer", "kultur", "deti", "kids", "mladez",
 )
 
 RISK_RULES = [
-    ("kontakt se zákazníky", r"komunikac.{0,35}(zákazník|klient|veřejnost)|radit zákazník|péče o zákazník"),
-    ("prodej na místě", r"\bprodej(?:e|i|na|ní)?\b|prodejně|proviz"),
     ("angličtina", r"angličtin|anglick|english"),
     ("směny nebo noční provoz", r"směnn|směny|noční služ|noční směn"),
     ("brigáda nebo kratší úvazek", r"\bbrigád|\bdpp\b|\bdpč\b|zkrácený úvazek|částečný úvazek"),
     ("lehčí manuální práce nebo výkonové normy", r"manuální práce|vychystáv|pickuj|kompletuj|třídění knih|normy|orientovaném na výkon|měříme rychlost"),
-    ("vrátnice, recepce nebo ostraha", r"\bvrátn|\brecepce\b|ostraha|kamerov|obchůzk|registrace návštěv"),
 ]
 
 
@@ -272,15 +283,12 @@ def classify(url: str, raw: str) -> dict | None:
         return None
     if re.search(r"[А-Яа-я]", plain) or "/ua-" in url.lower():
         return None
-    cultural_context = any(x in low for x in ("divadlo", "galerie", "muzeum", "knihovna", "kulturní"))
-    if "recep" in low and not cultural_context:
-        return None
     employment = "Plný úvazek"
     if re.search(r"\bbrigád|\bdpp\b|\bdpč\b", low):
         employment = "Brigáda / DPP nebo DPČ"
     elif re.search(r"zkrácený úvazek|částečný úvazek", low):
         employment = "Zkrácený úvazek"
-    if not ("plný úvazek" in low or "plný pracovní úvazek" in low or "hpp" in low
+    if not ("plný úvazek" in low or "plný pracovní úvazek" in low or "full time" in low or "full-time" in low or "hpp" in low
             or employment != "Plný úvazek"):
         return None
     title = meta(raw, "og:title") or re.sub(r"\s+", " ", re.search(r"(?is)<title>(.*?)</title>", raw).group(1) if re.search(r"(?is)<title>(.*?)</title>", raw) else "Pracovní nabídka")
@@ -293,36 +301,39 @@ def classify(url: str, raw: str) -> dict | None:
     location_text = (title + " " + url + " " + plain).lower()
     near = any(x in location_text for x in ("říčany", "babice", "strančice", "mnichovice"))
     prague = bool(re.search(r"\bpraha(?:\s|\b|[0-9-])|\bpraze\b|\bprahy\b|\bpražsk", location_text))
+    remote = bool(re.search(r"práce na dálku|práce z domova|home[ -]?office|plně vzdálen|100\s*%\s*remote|remote[ -]?(?:first|work)|odkudkoliv", location_text))
+    fully_remote = bool(re.search(r"plně.{0,15}(?:vzdálen|remote)|100\s*%\s*remote|remote[ -]?(?:first|work)|odkudkoliv|práce na dálku|práce z domova", location_text))
     outside = any(x in (title + " " + url).lower() for x in ("brno", "ostrava", "žilina", "plzeň", "plzen", "olomouc", "liberec", "pardubice", "hradec-králové", "hradec-kralove", "české-budějovice", "ceske-budejovice"))
-    if outside or not (near or prague):
+    if (outside and not fully_remote) or not (near or prague or remote):
         return None
-    score = sum(3 for x in POSITIVE if x in low)
+    score = sum(5 for x in TEXT_POSITIVE if x in low)
+    score += sum(4 for x in BOOK_POSITIVE if x in low)
+    score += sum(3 for x in OTHER_POSITIVE if x in low)
     if prague: score += 3
     if near: score += 5
-    if score < 6:
+    if remote: score += 2
+    if score < 5:
         return None
     desc = plain[:900]
-    place = "Babice a okolí" if near else "Praha"
+    place = "Práce na dálku" if remote else ("Babice a okolí" if near else "Praha")
     core = low[:1200]
-    category = "text" if any(x in core for x in ("redaktor", "korektor", "editor", "tvorba text", "úprava text", "nakladatel")) else "admin"
+    category = "text" if any(x in core for x in TEXT_POSITIVE + BOOK_POSITIVE) else "admin"
     if any(x in core for x in ("dětmi", "děti", "dětský", "zuš", "základní uměleck",
                               "dům dětí", "ddm", "domov mládeže", "volnočas")):
         category = "children"
     if "ozp" in low or "invalid" in low: category = "ozp"
     warnings = [label for label, pattern in RISK_RULES if re.search(pattern, core)]
     tag_label = {"text":"Text a kultura","admin":"Archivace a evidence","children":"Práce s dětmi","ozp":"Vhodné pro OZP"}[category]
-    if "knihobot" in low or "třídění knih" in low:
-        tag_label = "Knihy a třídění"
-    elif "vrátn" in core:
-        tag_label = "Vrátnice a třídění"
-    elif category == "children" and "prodej" in low:
-        tag_label = "Kultura a asistence"
+    if any(x in core for x in TEXT_POSITIVE):
+        tag_label = "Psaní, redakce a korektury"
+    elif "knihobot" in low or any(x in core for x in BOOK_POSITIVE):
+        tag_label = "Knihy a text"
     tags = [[tag_label, "ozp" if category == "ozp" else ""]]
     if warnings:
         tags.append(["Ke zvážení", "warn"])
         why = "Může být zajímavá, ale před reakcí zvažte: " + "; ".join(warnings) + "."
     else:
-        why = "Nabídka prošla filtrem kvalifikace, lokality a zátěžových požadavků."
+        why = "Nabídka prošla filtrem kvalifikace, komunikace a zátěžových požadavků."
     salary = "neuvedeno"
     salary_match = re.search(r"\b(\d{2,3}\s*[-–]\s*\d{2,3}\s*kč\s*/?\s*hod(?:inu)?)", low)
     if salary_match:
@@ -342,7 +353,7 @@ def classify(url: str, raw: str) -> dict | None:
             date = f"publikováno {int(day)}. {int(month)}. {year}"
     return {
         "id": hashlib.sha1(url.encode()).hexdigest()[:14], "category": category,
-        "location": "near" if place != "Praha" else "prague", "title": title,
+        "location": "remote" if remote else ("near" if near else "prague"), "title": title,
         "company": "viz inzerát", "place": place, "employment": employment,
         "salary": salary, "date": date,
         "source": urlparse(url).netloc.removeprefix("www."),
@@ -372,7 +383,7 @@ def main() -> None:
         for job in pool.map(inspect, sorted(candidates)):
             if job:
                 jobs.append(job)
-    jobs.sort(key=lambda j: (j.get("_risk", 0) > 0, j.get("_risk", 0), j["category"] == "ozp", -j.get("_score", 0)))
+    jobs.sort(key=lambda j: (j["category"] != "text", j.get("_risk", 0) > 0, j.get("_risk", 0), j["category"] == "ozp", -j.get("_score", 0)))
     for job in jobs:
         job.pop("_score", None)
         job.pop("_risk", None)
@@ -384,3 +395,4 @@ def main() -> None:
 
 if __name__ == "__main__":
     main()
+
